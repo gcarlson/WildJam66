@@ -1,10 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://mqih3prneuj"]
+[gd_scene load_steps=9 format=3 uid="uid://mqih3prneuj"]
 
 [ext_resource type="Script" path="res://Assets/Scenes/CharacterBody2D.gd" id="1_45h1p"]
+[ext_resource type="Texture2D" uid="uid://ctp1dm8y0nwea" path="res://Assets/Sprites/Characters/BigFireBoy.png" id="2_75j8r"]
 [ext_resource type="Texture2D" uid="uid://d2ajswl4t5ir2" path="res://Assets/Sprites/Tilemaps/66-CaveSheet.png" id="2_enk33"]
+[ext_resource type="Texture2D" uid="uid://dt1vpalobh88x" path="res://Assets/Sprites/Characters/SmallFireBoy.png" id="3_axt4c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0w0vx"]
-size = Vector2(16, 32)
+size = Vector2(33, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_as363"]
+size = Vector2(10, 15)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xt82n"]
 texture = ExtResource("2_enk33")
@@ -74,18 +79,27 @@ sources/0 = SubResource("TileSetAtlasSource_xt82n")
 position = Vector2(600, 300)
 script = ExtResource("1_45h1p")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="BigCollider" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(-0.5, 8)
 shape = SubResource("RectangleShape2D_0w0vx")
-
-[node name="ColorRect" type="ColorRect" parent="CharacterBody2D"]
-z_index = 1
-offset_left = -8.0
-offset_top = -16.0
-offset_right = 8.0
-offset_bottom = 16.0
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 zoom = Vector2(3, 3)
+
+[node name="BigSprite" type="Sprite2D" parent="CharacterBody2D"]
+z_index = 1
+texture = ExtResource("2_75j8r")
+
+[node name="SmallSprite" type="Sprite2D" parent="CharacterBody2D"]
+visible = false
+z_index = 1
+position = Vector2(0, 16)
+texture = ExtResource("3_axt4c")
+
+[node name="SmallCollider" type="CollisionShape2D" parent="CharacterBody2D"]
+visible = false
+position = Vector2(0, 24.5)
+shape = SubResource("RectangleShape2D_as363")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_qldis")
