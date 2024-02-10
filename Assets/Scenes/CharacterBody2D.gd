@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @onready var big_sprite = $BigAnimatedSprite
-@onready var small_sprite = $SmallSprite
+@onready var small_sprite = $SmallAnimatedSprite
 @onready var big_collider = $BigCollider
 @onready var small_collider = $SmallCollider
 
@@ -47,6 +47,6 @@ func _physics_process(delta):
 		big_sprite.play("Walk")
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-		big_sprite.play("Walk")
+		big_sprite.play("Idle")
 
 	move_and_slide()
