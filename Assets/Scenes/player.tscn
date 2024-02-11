@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Assets/Scenes/CharacterBody2D.gd" id="1_qeph5"]
 [ext_resource type="Texture2D" uid="uid://d1l7gpalk64bs" path="res://Assets/Sprites/Characters/PlayerAnimations/BigFireBoiSheetIdle.png" id="3_46xt0"]
-[ext_resource type="Texture2D" uid="uid://bm23mket3ivdp" path="res://Assets/Sprites/Characters/PlayerAnimations/AnimationsBigBoi-Walk.png" id="4_jj7p8"]
+[ext_resource type="Texture2D" uid="uid://k0sjgny1lmke" path="res://Assets/Sprites/Characters/PlayerAnimations/AnimationsBigBoi-Walk2.png" id="3_rryxb"]
 [ext_resource type="Texture2D" uid="uid://ci86smgk2lxbi" path="res://Assets/Sprites/Characters/PlayerAnimations/SmallFireBoiIdle.png" id="5_722p4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0w0vx"]
@@ -31,37 +31,37 @@ region = Rect2(114, 0, 38, 50)
 atlas = ExtResource("3_46xt0")
 region = Rect2(152, 0, 38, 50)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fk317"]
-atlas = ExtResource("4_jj7p8")
-region = Rect2(0, 0, 52, 55)
+[sub_resource type="AtlasTexture" id="AtlasTexture_b7ac3"]
+atlas = ExtResource("3_rryxb")
+region = Rect2(0, 0, 56, 55)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jupt3"]
-atlas = ExtResource("4_jj7p8")
-region = Rect2(0, 55, 52, 55)
+[sub_resource type="AtlasTexture" id="AtlasTexture_tpkbn"]
+atlas = ExtResource("3_rryxb")
+region = Rect2(0, 55, 56, 55)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_edato"]
-atlas = ExtResource("4_jj7p8")
-region = Rect2(0, 110, 52, 55)
+[sub_resource type="AtlasTexture" id="AtlasTexture_7jfto"]
+atlas = ExtResource("3_rryxb")
+region = Rect2(0, 110, 56, 55)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_n5qui"]
-atlas = ExtResource("4_jj7p8")
-region = Rect2(0, 165, 52, 55)
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4ypb"]
+atlas = ExtResource("3_rryxb")
+region = Rect2(0, 165, 56, 55)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uh2qc"]
-atlas = ExtResource("4_jj7p8")
-region = Rect2(0, 220, 52, 55)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ht41j"]
+atlas = ExtResource("3_rryxb")
+region = Rect2(0, 220, 56, 55)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qiljf"]
-atlas = ExtResource("4_jj7p8")
-region = Rect2(0, 275, 52, 55)
+[sub_resource type="AtlasTexture" id="AtlasTexture_uxl37"]
+atlas = ExtResource("3_rryxb")
+region = Rect2(0, 275, 56, 55)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qereh"]
-atlas = ExtResource("4_jj7p8")
-region = Rect2(0, 330, 52, 55)
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ubey"]
+atlas = ExtResource("3_rryxb")
+region = Rect2(0, 330, 56, 55)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sl2ga"]
-atlas = ExtResource("4_jj7p8")
-region = Rect2(0, 385, 52, 55)
+[sub_resource type="AtlasTexture" id="AtlasTexture_svtmt"]
+atlas = ExtResource("3_rryxb")
+region = Rect2(0, 385, 56, 55)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_eo2u2"]
 animations = [{
@@ -90,28 +90,28 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fk317")
+"texture": SubResource("AtlasTexture_b7ac3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jupt3")
+"texture": SubResource("AtlasTexture_tpkbn")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_edato")
+"texture": SubResource("AtlasTexture_7jfto")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_n5qui")
+"texture": SubResource("AtlasTexture_h4ypb")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_uh2qc")
+"texture": SubResource("AtlasTexture_ht41j")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qiljf")
+"texture": SubResource("AtlasTexture_uxl37")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qereh")
+"texture": SubResource("AtlasTexture_5ubey")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sl2ga")
+"texture": SubResource("AtlasTexture_svtmt")
 }],
 "loop": true,
 "name": &"Walk",
@@ -195,11 +195,11 @@ shape = SubResource("RectangleShape2D_as363")
 
 [node name="BigAnimatedSprite" type="AnimatedSprite2D" parent="."]
 z_index = 1
-position = Vector2(-1, 7)
+position = Vector2(0, 7)
 sprite_frames = SubResource("SpriteFrames_eo2u2")
-animation = &"Walk"
+animation = &"Idle"
 autoplay = "Idle"
-frame_progress = 0.256932
+speed_scale = 2.0
 
 [node name="SmallAnimatedSprite" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -213,7 +213,6 @@ frame_progress = 0.956607
 [node name="BigLights" type="Node2D" parent="."]
 
 [node name="PointLight2D2" type="PointLight2D" parent="BigLights"]
-visible = false
 position = Vector2(0, 12)
 energy = 0.5
 range_layer_min = -5
@@ -222,7 +221,6 @@ texture = SubResource("GradientTexture2D_rnnon")
 texture_scale = 2.0
 
 [node name="PointLight2D" type="PointLight2D" parent="BigLights"]
-visible = false
 position = Vector2(0, 2)
 energy = 0.5
 range_layer_min = -5
