@@ -1,9 +1,8 @@
-[gd_scene load_steps=32 format=3 uid="uid://bfbr7k2y4fs40"]
+[gd_scene load_steps=30 format=3 uid="uid://bfbr7k2y4fs40"]
 
 [ext_resource type="Script" path="res://Assets/Scenes/CharacterBody2D.gd" id="1_qeph5"]
 [ext_resource type="Texture2D" uid="uid://d1l7gpalk64bs" path="res://Assets/Sprites/Characters/PlayerAnimations/BigFireBoiSheetIdle.png" id="3_46xt0"]
 [ext_resource type="Texture2D" uid="uid://bm23mket3ivdp" path="res://Assets/Sprites/Characters/PlayerAnimations/AnimationsBigBoi-Walk.png" id="4_jj7p8"]
-[ext_resource type="Texture2D" uid="uid://ctp1dm8y0nwea" path="res://Assets/Sprites/Characters/BigFireBoy.png" id="4_wauq0"]
 [ext_resource type="Texture2D" uid="uid://ci86smgk2lxbi" path="res://Assets/Sprites/Characters/PlayerAnimations/SmallFireBoiIdle.png" id="5_722p4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0w0vx"]
@@ -31,10 +30,6 @@ region = Rect2(114, 0, 38, 50)
 [sub_resource type="AtlasTexture" id="AtlasTexture_acv2x"]
 atlas = ExtResource("3_46xt0")
 region = Rect2(152, 0, 38, 50)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2krsu"]
-atlas = ExtResource("4_wauq0")
-region = Rect2(0, 0, 48, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fk317"]
 atlas = ExtResource("4_jj7p8")
@@ -94,9 +89,6 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2krsu")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fk317")
 }, {
@@ -203,10 +195,11 @@ shape = SubResource("RectangleShape2D_as363")
 
 [node name="BigAnimatedSprite" type="AnimatedSprite2D" parent="."]
 z_index = 1
-position = Vector2(-2, 7)
+position = Vector2(-1, 7)
 sprite_frames = SubResource("SpriteFrames_eo2u2")
 animation = &"Walk"
 autoplay = "Idle"
+frame_progress = 0.256932
 
 [node name="SmallAnimatedSprite" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -220,6 +213,7 @@ frame_progress = 0.956607
 [node name="BigLights" type="Node2D" parent="."]
 
 [node name="PointLight2D2" type="PointLight2D" parent="BigLights"]
+visible = false
 position = Vector2(0, 12)
 energy = 0.5
 range_layer_min = -5
@@ -228,6 +222,7 @@ texture = SubResource("GradientTexture2D_rnnon")
 texture_scale = 2.0
 
 [node name="PointLight2D" type="PointLight2D" parent="BigLights"]
+visible = false
 position = Vector2(0, 2)
 energy = 0.5
 range_layer_min = -5
