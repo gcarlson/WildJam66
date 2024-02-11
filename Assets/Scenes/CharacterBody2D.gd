@@ -4,6 +4,8 @@ extends CharacterBody2D
 @onready var small_sprite = $SmallAnimatedSprite
 @onready var big_collider = $BigCollider
 @onready var small_collider = $SmallCollider
+@onready var big_lights = $BigLights
+@onready var small_lights = $SmallLights
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -31,6 +33,9 @@ func _physics_process(delta):
 		big_collider.disabled = not armored
 		small_sprite.visible = not armored
 		small_collider.disabled = armored
+		
+		small_lights.visible = not armored
+		big_lights.visible = armored
 		
 		if armored:
 			active_sprite = big_sprite
