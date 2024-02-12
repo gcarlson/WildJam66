@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @onready var ray = $RayCast2D
+@onready var reaction = $RichTextLabel
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -18,6 +19,8 @@ func _ready():
 func _physics_process(delta):
 	ray.target_position = player.global_position - global_position + Vector2(0, 25)
 	if (not ray.is_colliding() and not player.armored and ray.target_position.length() < 128):
+		reaction.text = "[center]![/center]"
 		print("ddd light")
 	else:
+		reaction.text = ""
 		print("ddd dark")
