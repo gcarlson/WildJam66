@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://86d2iovn0pme"]
+
+[ext_resource type="Script" path="res://Assets/Scenes/Enemy.gd" id="1_1o46a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mfy7l"]
+size = Vector2(16, 16)
+
+[node name="Mole" type="CharacterBody2D"]
+position = Vector2(986, 326)
+script = ExtResource("1_1o46a")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_mfy7l")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 1)
+collision_mask = 2
