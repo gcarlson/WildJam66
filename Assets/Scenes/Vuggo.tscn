@@ -1,6 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://44qp0jjk57wb"]
+[gd_scene load_steps=9 format=3 uid="uid://44qp0jjk57wb"]
 
-[ext_resource type="Script" path="res://Vuggo.gd" id="1_nl18k"]
+[ext_resource type="Script" path="res://Assets/Scenes/Vuggo.gd" id="1_nl18k"]
 [ext_resource type="Texture2D" uid="uid://bxt56aagsp5ow" path="res://Assets/Sprites/Characters/vuggo.png" id="1_ushaq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1ly4r"]
@@ -32,6 +32,9 @@ animations = [{
 radius = 7.0
 height = 24.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ouodc"]
+size = Vector2(24, 7)
+
 [node name="Vuggo" type="CharacterBody2D"]
 script = ExtResource("1_nl18k")
 
@@ -52,4 +55,12 @@ shape = SubResource("CapsuleShape2D_3cj43")
 target_position = Vector2(0, 0)
 collision_mask = 2
 
+[node name="Area2D2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2(0, -7.5)
+shape = SubResource("RectangleShape2D_ouodc")
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_2_body_entered"]
+[connection signal="body_exited" from="Area2D2" to="." method="_on_area_2d_2_body_exited"]

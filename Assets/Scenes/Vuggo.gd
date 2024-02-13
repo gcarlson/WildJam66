@@ -5,6 +5,9 @@ extends CharacterBody2D
 @onready var nosecol = $Area2D
 const SPEED = 300.0
 var facing_left = true
+var light_time = 0.0
+var player_colliding = null
+
 const JUMP_VELOCITY = -400.0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -25,19 +28,30 @@ func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
-	velocity.x = -30 if facing_left else 30
-	
-#if is_lit():
+		
+	if is_lit():
+		velocity.x = 0
+		light_time += delta
+		if light_time > 4.0 and light_time - delta <= 4.0:
+			if player_colliding and player_colliding.is_on_floor():
+				player_colliding.velocity.y = -600
+	else:
+		velocity.x = -30 if facing_left else 30
+		light_time = 0
 	
 	move_and_slide()
-	
-	
-
 
 func _on_area_2d_body_entered(body):
 	facing_left = not facing_left
 	print ("slapa")
 	sprite.flip_h = not facing_left
 	nosecol.position.x = -15 if facing_left else 15
-	
-	
+
+func _on_area_2d_2_body_entered(body):
+	print("top collided")
+	if (body.is_in_group("Player")):
+		player_colliding = body
+
+func _on_area_2d_2_body_exited(body):
+	if (body.is_in_group("Player")):
+		player_colliding = null

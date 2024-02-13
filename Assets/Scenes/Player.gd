@@ -14,6 +14,8 @@ var armored = true
 var active_sprite = big_sprite
 var tilemap
 
+var anim_locked = false
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -29,13 +31,13 @@ func _physics_process(delta):
 	if not armored and Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		
-	if not armored and Input.is_action_just_pressed("ability_1"):
-		velocity.x = 100
-		
-	if armored and Input.is_action_just_pressed("ability_1"):
+	if armored and Input.is_action_just_pressed("ability_1") and !anim_locked:
 		#print("ddd tile: ", tilemap.local_to_map(global_position + Vector2(0, 36)))
-		for x in range(-16, 17, 16):
-			tilemap.erase_cell(0, tilemap.local_to_map(global_position + Vector2(x, 36)))
+		big_sprite.play("Smash")
+		delayed_smash()
+		anim_locked = true
+		#for x in range(-16, 17, 16):
+		#	tilemap.erase_cell(0, tilemap.local_to_map(global_position + Vector2(x, 36)))
 		
 	if Input.is_action_just_pressed("switch_form"):
 		armored = not armored
@@ -60,10 +62,23 @@ func _physics_process(delta):
 		velocity.x = direction * SPEED
 		big_sprite.flip_h = (direction < 0)
 		small_sprite.flip_h = (direction < 0)
-		big_sprite.play("Walk")
+		if not anim_locked:
+			big_sprite.play("Walk")
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		#velocity.x = velocity.x / 2
-		big_sprite.play("Idle")
+		if not anim_locked:
+			big_sprite.play("Idle")
 
 	move_and_slide()
+	
+
+func delayed_smash():
+	await get_tree().create_timer(0.65).timeout
+	for x in range(-16, 17, 16):
+		tilemap.erase_cell(0, tilemap.local_to_map(global_position + Vector2(x, 36)))
+		
+	print("After timout")
+
+func _on_big_animated_sprite_animation_finished():
+	anim_locked = false

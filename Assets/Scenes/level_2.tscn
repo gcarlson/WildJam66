@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://c0w4wiowaknqk" path="res://Assets/Scenes/lantern.tscn" id="7_rfnio"]
 [ext_resource type="PackedScene" uid="uid://bpt0cyoi2l0w1" path="res://Assets/Scenes/sun.tscn" id="8_g6acb"]
 [ext_resource type="Texture2D" uid="uid://bxt56aagsp5ow" path="res://Assets/Sprites/Characters/vuggo.png" id="9_gt25j"]
-[ext_resource type="PackedScene" uid="uid://44qp0jjk57wb" path="res://Vuggo.tscn" id="10_gj75f"]
+[ext_resource type="PackedScene" uid="uid://44qp0jjk57wb" path="res://Assets/Scenes/Vuggo.tscn" id="10_gj75f"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_0k5vc"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, 8, -8)
