@@ -62,10 +62,8 @@ func _physics_process(delta):
 		small_sprite.flip_h = (direction < 0)
 		big_sprite.play("Walk")
 	else:
-		print("ddd ", velocity.x)
-		#velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.x = velocity.x / 2
-		print("ddd adjusted ", velocity.x)
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		#velocity.x = velocity.x / 2
 		big_sprite.play("Idle")
 
 	move_and_slide()

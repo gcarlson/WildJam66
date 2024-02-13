@@ -56,17 +56,16 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Gradient" id="Gradient_fitdh"]
+[sub_resource type="Gradient" id="Gradient_kh788"]
 offsets = PackedFloat32Array(0, 0.720779)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_d72as"]
-gradient = SubResource("Gradient_fitdh")
+gradient = SubResource("Gradient_kh788")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
 [node name="Lantern" type="Area2D"]
-position = Vector2(634, 284)
 script = ExtResource("1_tydu2")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -93,7 +92,7 @@ sprite_frames = SubResource("SpriteFrames_ofivk")
 animation = &"Idle"
 autoplay = "Idle"
 
-[node name="SmallLights" type="Node2D" parent="."]
+[node name="SmallLights" type="Node2D" parent="." groups=["Lights"]]
 visible = false
 position = Vector2(0, 25)
 

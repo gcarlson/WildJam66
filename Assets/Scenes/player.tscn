@@ -1,6 +1,6 @@
 [gd_scene load_steps=30 format=3 uid="uid://bfbr7k2y4fs40"]
 
-[ext_resource type="Script" path="res://Assets/Scenes/CharacterBody2D.gd" id="1_qeph5"]
+[ext_resource type="Script" path="res://Assets/Scenes/Player.gd" id="1_glxh4"]
 [ext_resource type="Texture2D" uid="uid://d1l7gpalk64bs" path="res://Assets/Sprites/Characters/PlayerAnimations/BigFireBoiSheetIdle.png" id="3_46xt0"]
 [ext_resource type="Texture2D" uid="uid://k0sjgny1lmke" path="res://Assets/Sprites/Characters/PlayerAnimations/AnimationsBigBoi-Walk2.png" id="3_rryxb"]
 [ext_resource type="Texture2D" uid="uid://ci86smgk2lxbi" path="res://Assets/Sprites/Characters/PlayerAnimations/SmallFireBoiIdle.png" id="5_722p4"]
@@ -179,7 +179,7 @@ fill_from = Vector2(0.5, 0.5)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 position = Vector2(600, 300)
-script = ExtResource("1_qeph5")
+script = ExtResource("1_glxh4")
 
 [node name="BigCollider" type="CollisionShape2D" parent="."]
 position = Vector2(0, 8.5)
@@ -229,7 +229,7 @@ shadow_enabled = true
 texture = SubResource("GradientTexture2D_rnnon")
 texture_scale = 2.0
 
-[node name="SmallLights" type="Node2D" parent="."]
+[node name="SmallLights" type="Node2D" parent="." groups=["Lights"]]
 visible = false
 position = Vector2(0, 25)
 
