@@ -10,6 +10,13 @@ const JUMP_VELOCITY = -400.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var player
+var aggroed = false
+
+var facing_right = true
+var tunnel_cooldown = 5
+var tunnel_dur = -1
+var tunnel_target
+
 
 func _ready():
 	print("ddd init")
@@ -25,9 +32,31 @@ func is_lit():
 	return false
 
 func _physics_process(delta):
+	# Add the gravity.
+	if not is_on_floor():
+		velocity.y += gravity * delta
+		
+	if aggroed:
+		tunnel_cooldown -= delta
+		if tunnel_cooldown < 0:
+			tunnel_cooldown = 5
+			tunnel_dur = 0.5
+			tunnel_target = player.last_ground + Vector2(0, 16)
+		if tunnel_dur > 0:
+			velocity.x = 0
+			tunnel_dur -= delta
+			if tunnel_dur <= 0:
+				position = tunnel_target
+		else:
+			facing_right = (player.global_position.x > global_position.x)
+			velocity.x = 15 if facing_right else -15
+
 	if is_lit():
 		reaction.text = "[center]![/center]"
+		aggroed = true
 		#print("ddd light")
 	else:
 		reaction.text = ""
 		#print("ddd dark")
+
+	move_and_slide()

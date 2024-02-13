@@ -1,7 +1,7 @@
 [gd_scene load_steps=42 format=3 uid="uid://bfbr7k2y4fs40"]
 
 [ext_resource type="Script" path="res://Assets/Scenes/Player.gd" id="1_glxh4"]
-[ext_resource type="Texture2D" uid="uid://d1l7gpalk64bs" path="res://Assets/Sprites/Characters/PlayerAnimations/BigFireBoiSheetIdle.png" id="3_46xt0"]
+[ext_resource type="Texture2D" uid="uid://p5fcha3vju8g" path="res://Assets/Sprites/Characters/PlayerAnimations/updated-idle.png" id="2_kws6x"]
 [ext_resource type="Texture2D" uid="uid://ccxabfuhijt6s" path="res://Assets/Sprites/Characters/PlayerAnimations/AnimationsBigBoislam.png" id="3_gbewv"]
 [ext_resource type="Texture2D" uid="uid://k0sjgny1lmke" path="res://Assets/Sprites/Characters/PlayerAnimations/AnimationsBigBoi-Walk2.png" id="3_rryxb"]
 [ext_resource type="Texture2D" uid="uid://ci86smgk2lxbi" path="res://Assets/Sprites/Characters/PlayerAnimations/SmallFireBoiIdle.png" id="5_722p4"]
@@ -12,25 +12,25 @@ size = Vector2(28, 47)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_as363"]
 size = Vector2(10, 15)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_otkpu"]
-atlas = ExtResource("3_46xt0")
-region = Rect2(0, 0, 38, 50)
+[sub_resource type="AtlasTexture" id="AtlasTexture_42fpq"]
+atlas = ExtResource("2_kws6x")
+region = Rect2(0, 0, 38, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dosvl"]
-atlas = ExtResource("3_46xt0")
-region = Rect2(38, 0, 38, 50)
+[sub_resource type="AtlasTexture" id="AtlasTexture_6s8v1"]
+atlas = ExtResource("2_kws6x")
+region = Rect2(38, 0, 38, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kp3gu"]
-atlas = ExtResource("3_46xt0")
-region = Rect2(76, 0, 38, 50)
+[sub_resource type="AtlasTexture" id="AtlasTexture_bnp0n"]
+atlas = ExtResource("2_kws6x")
+region = Rect2(76, 0, 38, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_emu64"]
-atlas = ExtResource("3_46xt0")
-region = Rect2(114, 0, 38, 50)
+[sub_resource type="AtlasTexture" id="AtlasTexture_s07nx"]
+atlas = ExtResource("2_kws6x")
+region = Rect2(114, 0, 38, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_acv2x"]
-atlas = ExtResource("3_46xt0")
-region = Rect2(152, 0, 38, 50)
+[sub_resource type="AtlasTexture" id="AtlasTexture_icq7m"]
+atlas = ExtResource("2_kws6x")
+region = Rect2(152, 0, 38, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lf0mq"]
 atlas = ExtResource("3_gbewv")
@@ -112,22 +112,19 @@ region = Rect2(0, 385, 56, 55)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_otkpu")
+"texture": SubResource("AtlasTexture_42fpq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dosvl")
+"texture": SubResource("AtlasTexture_6s8v1")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kp3gu")
+"texture": SubResource("AtlasTexture_bnp0n")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_emu64")
+"texture": SubResource("AtlasTexture_s07nx")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_acv2x")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_otkpu")
+"texture": SubResource("AtlasTexture_icq7m")
 }],
 "loop": true,
 "name": &"Idle",
@@ -278,9 +275,8 @@ shape = SubResource("RectangleShape2D_as363")
 
 [node name="BigAnimatedSprite" type="AnimatedSprite2D" parent="."]
 z_index = 1
-position = Vector2(0, 7)
 sprite_frames = SubResource("SpriteFrames_eo2u2")
-animation = &"Idle"
+animation = &"Walk"
 autoplay = "Idle"
 speed_scale = 2.0
 

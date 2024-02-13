@@ -14,6 +14,7 @@ var armored = true
 var active_sprite = big_sprite
 var tilemap
 
+var last_ground = Vector2(0, 0)
 var anim_locked = false
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -26,6 +27,8 @@ func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
+	else:
+		last_ground = global_position
 
 	# Handle jump.
 	if not armored and Input.is_action_just_pressed("ui_accept") and is_on_floor():
