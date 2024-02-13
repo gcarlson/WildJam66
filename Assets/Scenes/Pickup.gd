@@ -14,7 +14,8 @@ func _process(delta):
 
 
 func _on_body_entered(body):
-	if body.is_in_group("Player"):
+	
+	if not player && body.is_in_group("Player"):
 		print("ddd pickup")
 		player = body
 		#body.add_child(self)
