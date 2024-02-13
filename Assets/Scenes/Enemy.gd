@@ -48,7 +48,8 @@ func _physics_process(delta):
 			if tunnel_dur <= 0:
 				position = tunnel_target
 		else:
-			facing_right = (player.global_position.x > global_position.x)
+			if abs(player.global_position.x - global_position.x) > 8:
+				facing_right = (player.global_position.x > global_position.x)
 			velocity.x = 15 if facing_right else -15
 
 	if is_lit():
