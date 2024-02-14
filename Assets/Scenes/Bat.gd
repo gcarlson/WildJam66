@@ -27,7 +27,7 @@ func _ready():
 func _physics_process(delta):
 	if aggroed:
 		rays.look_at(player.global_position)
-		if (player.global_position - global_position).length() < 50 or not forwardray.is_colliding():
+		if (player.global_position - global_position).length() < 60 or not forwardray.is_colliding():
 			velocity = (player.global_position - global_position).normalized() * SPEED
 		elif not rightray.is_colliding():
 			velocity = (player.global_position - global_position).normalized().rotated(PI / 3) * SPEED

@@ -7,17 +7,13 @@
 [ext_resource type="Texture2D" uid="uid://baj1vas6d20rx" path="res://Assets/Sprites/Tilemaps/Parallax/Parallax-HeatRises3.png" id="5_svhi2"]
 [ext_resource type="PackedScene" uid="uid://86d2iovn0pme" path="res://Assets/Scenes/mole.tscn" id="6_s74nn"]
 [ext_resource type="PackedScene" uid="uid://c0w4wiowaknqk" path="res://Assets/Scenes/lantern.tscn" id="7_vdffh"]
+[ext_resource type="PackedScene" uid="uid://byddm6v701cuj" path="res://Assets/Scenes/door.tscn" id="8_d7mvu"]
 [ext_resource type="PackedScene" uid="uid://bpt0cyoi2l0w1" path="res://Assets/Scenes/sun.tscn" id="8_kct52"]
 [ext_resource type="PackedScene" uid="uid://85t1sir7crpg" path="res://Assets/Scenes/bat.tscn" id="9_acunw"]
+[ext_resource type="PackedScene" uid="uid://b28uw3sxtcrcn" path="res://Assets/Scenes/switch.tscn" id="11_7xdqd"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_t3kuu"]
 polygon = PackedVector2Array(87, 21, 87, 40, 18, 40, 18, 21)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_em013"]
-size = Vector2(16, 45)
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_m8y8h"]
-polygon = PackedVector2Array(-8, 22.5, -8, -22.5, 8, -22.5, 8, 22.5)
 
 [node name="Node2D" type="Node2D"]
 
@@ -79,31 +75,13 @@ shadow_enabled = true
 
 [node name="Lantern" parent="." node_paths=PackedStringArray("door") instance=ExtResource("7_vdffh")]
 position = Vector2(632, 282)
-door = NodePath("../StaticBody2D")
+door = NodePath("")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(1063, 272)
-
-[node name="ColorRect" type="ColorRect" parent="StaticBody2D"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -8.0
-offset_top = -22.5
-offset_right = 8.0
-offset_bottom = 22.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource("RectangleShape2D_em013")
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="StaticBody2D"]
-occluder = SubResource("OccluderPolygon2D_m8y8h")
+[node name="Door" parent="." instance=ExtResource("8_d7mvu")]
 
 [node name="Sun" parent="." instance=ExtResource("8_kct52")]
 
 [node name="Bat" parent="." instance=ExtResource("9_acunw")]
 position = Vector2(200, 300)
+
+[node name="Switch" parent="." instance=ExtResource("11_7xdqd")]

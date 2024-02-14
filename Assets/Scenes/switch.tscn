@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://b28uw3sxtcrcn"]
+
+[ext_resource type="Script" path="res://Assets/Scenes/Switch.gd" id="1_o3hl5"]
+[ext_resource type="Texture2D" uid="uid://dxhneij3kx53j" path="res://Assets/Sprites/Interactables/SwitchDown.png" id="2_0l8e0"]
+[ext_resource type="Texture2D" uid="uid://boecnthbg3am5" path="res://Assets/Sprites/Interactables/SwitchUp.png" id="3_4sm66"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oqxy5"]
+size = Vector2(16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nru56"]
+atlas = ExtResource("2_0l8e0")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gkinq"]
+atlas = ExtResource("3_4sm66")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rxhhh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nru56")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gkinq")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[node name="Switch" type="Area2D" node_paths=PackedStringArray("door")]
+position = Vector2(840.365, 378.935)
+script = ExtResource("1_o3hl5")
+door = NodePath("")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_oqxy5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_rxhhh")
+animation = &"up"
+autoplay = "up"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
