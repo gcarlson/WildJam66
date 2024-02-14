@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cdbvahl7yvref"]
+[gd_scene load_steps=4 format=3 uid="uid://cs1y4ybl17r43"]
 
 [ext_resource type="Texture2D" uid="uid://brka4n3womthj" path="res://Assets/Sprites/Tilemaps/Parallax/Parallax-HeatRises1.png" id="1_nd707"]
 [ext_resource type="Texture2D" uid="uid://cycssov82u41r" path="res://Assets/Sprites/Tilemaps/Parallax/Parallax-HeatRises2.png" id="2_ohbeo"]

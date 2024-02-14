@@ -9,7 +9,6 @@ size = Vector2(16, 16)
 size = Vector2(22, 22)
 
 [node name="Mole" type="CharacterBody2D"]
-position = Vector2(986, 326)
 script = ExtResource("1_1o46a")
 
 [node name="ColorRect" type="ColorRect" parent="."]

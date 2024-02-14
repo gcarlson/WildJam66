@@ -26,15 +26,16 @@ func _ready():
 
 func _physics_process(delta):
 	if aggroed:
-		rays.look_at(player.global_position)
-		if (player.global_position - global_position).length() < 60 or not forwardray.is_colliding():
-			velocity = (player.global_position - global_position).normalized() * SPEED
+		var target = player.global_position + Vector2(0, 0 if player.armored else 24.5)
+		rays.look_at(target)
+		if (target - global_position).length() < 60 or not forwardray.is_colliding():
+			velocity = (target - global_position).normalized() * SPEED
 		elif not rightray.is_colliding():
-			velocity = (player.global_position - global_position).normalized().rotated(PI / 3) * SPEED
+			velocity = (target - global_position).normalized().rotated(PI / 3) * SPEED
 		elif not leftray.is_colliding():
-			velocity = (player.global_position - global_position).normalized().rotated(-PI / 3) * SPEED
+			velocity = (target - global_position).normalized().rotated(-PI / 3) * SPEED
 		else:
-			velocity = (player.global_position - global_position).normalized() * SPEED
+			velocity = (target - global_position).normalized() * SPEED
 		move_and_slide()
 
 func _on_area_2d_body_entered(body):

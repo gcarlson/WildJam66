@@ -9,7 +9,6 @@ radius = 4.0
 size = Vector2(22, 22)
 
 [node name="Bat" type="CharacterBody2D" groups=["Bats"]]
-position = Vector2(200, 350)
 script = ExtResource("1_f52c4")
 
 [node name="ColorRect" type="ColorRect" parent="."]

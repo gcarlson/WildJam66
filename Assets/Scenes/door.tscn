@@ -38,7 +38,6 @@ animations = [{
 }]
 
 [node name="Door" type="StaticBody2D"]
-position = Vector2(1063, 272)
 script = ExtResource("1_fed8m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

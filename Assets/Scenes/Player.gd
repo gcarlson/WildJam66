@@ -7,8 +7,8 @@ extends CharacterBody2D
 @onready var big_lights = $BigLights
 @onready var small_lights = $SmallLights
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+const SPEED = 250.0
+const JUMP_VELOCITY = -325.0
 
 var armored = true
 var active_sprite = big_sprite
