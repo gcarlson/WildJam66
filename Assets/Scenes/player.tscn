@@ -276,7 +276,7 @@ shape = SubResource("RectangleShape2D_as363")
 [node name="BigAnimatedSprite" type="AnimatedSprite2D" parent="."]
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_eo2u2")
-animation = &"Walk"
+animation = &"Smash"
 autoplay = "Idle"
 speed_scale = 2.0
 

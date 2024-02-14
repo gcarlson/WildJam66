@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=14 format=3 uid="uid://fv5ofduws1au"]
+[gd_resource type="TileSet" load_steps=14 format=3 uid="uid://biuss18t7viue"]
 
 [ext_resource type="Texture2D" uid="uid://d2ajswl4t5ir2" path="res://Assets/Sprites/Tilemaps/66-CaveSheet.png" id="1_ma48s"]
 [ext_resource type="Texture2D" uid="uid://kwx7frac628h" path="res://Assets/Sprites/Tilemaps/water.png" id="2_o74xu"]

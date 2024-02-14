@@ -65,8 +65,11 @@ func _physics_process(delta):
 		velocity.x = direction * SPEED
 		big_sprite.flip_h = (direction < 0)
 		small_sprite.flip_h = (direction < 0)
-		if not anim_locked:
+		if not anim_locked and armored:
 			big_sprite.play("Walk")
+			for x in get_tree().get_nodes_in_group("Bats"):
+				if (x.global_position - global_position).length() < 128:
+					x.aggroed = true
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		#velocity.x = velocity.x / 2

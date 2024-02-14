@@ -35,7 +35,7 @@ func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
-		
+
 	if aggroed:
 		tunnel_cooldown -= delta
 		if tunnel_cooldown < 0:
@@ -61,3 +61,8 @@ func _physics_process(delta):
 		#print("ddd dark")
 
 	move_and_slide()
+
+func _on_area_2d_body_entered(body):
+	if body.is_in_group("Player"):
+		print("ddd hit player")
+		get_tree().reload_current_scene()

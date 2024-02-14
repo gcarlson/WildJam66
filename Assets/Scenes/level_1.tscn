@@ -1,13 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://mqih3prneuj"]
+[gd_scene load_steps=13 format=3 uid="uid://mqih3prneuj"]
 
 [ext_resource type="PackedScene" uid="uid://bfbr7k2y4fs40" path="res://Assets/Scenes/player.tscn" id="1_ihhvc"]
-[ext_resource type="TileSet" uid="uid://fv5ofduws1au" path="res://Assets/Scenes/GlobalSet.tres" id="2_hbol7"]
+[ext_resource type="TileSet" uid="uid://biuss18t7viue" path="res://Assets/Scenes/GlobalSet.tres" id="2_hbol7"]
 [ext_resource type="Texture2D" uid="uid://brka4n3womthj" path="res://Assets/Sprites/Tilemaps/Parallax/Parallax-HeatRises1.png" id="3_tgahq"]
 [ext_resource type="Texture2D" uid="uid://cycssov82u41r" path="res://Assets/Sprites/Tilemaps/Parallax/Parallax-HeatRises2.png" id="4_ctfym"]
 [ext_resource type="Texture2D" uid="uid://baj1vas6d20rx" path="res://Assets/Sprites/Tilemaps/Parallax/Parallax-HeatRises3.png" id="5_svhi2"]
 [ext_resource type="PackedScene" uid="uid://86d2iovn0pme" path="res://Assets/Scenes/mole.tscn" id="6_s74nn"]
 [ext_resource type="PackedScene" uid="uid://c0w4wiowaknqk" path="res://Assets/Scenes/lantern.tscn" id="7_vdffh"]
 [ext_resource type="PackedScene" uid="uid://bpt0cyoi2l0w1" path="res://Assets/Scenes/sun.tscn" id="8_kct52"]
+[ext_resource type="PackedScene" uid="uid://85t1sir7crpg" path="res://Assets/Scenes/bat.tscn" id="9_acunw"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_t3kuu"]
 polygon = PackedVector2Array(87, 21, 87, 40, 18, 40, 18, 21)
@@ -103,3 +104,6 @@ shape = SubResource("RectangleShape2D_em013")
 occluder = SubResource("OccluderPolygon2D_m8y8h")
 
 [node name="Sun" parent="." instance=ExtResource("8_kct52")]
+
+[node name="Bat" parent="." instance=ExtResource("9_acunw")]
+position = Vector2(200, 300)
