@@ -32,7 +32,7 @@ func _physics_process(delta):
 	if is_lit():
 		velocity.x = 0
 		light_time += delta
-		if light_time > 4.0 and light_time - delta <= 4.0:
+		if light_time > 1.0 and light_time - delta <= 1.0:
 			if player_colliding and player_colliding.is_on_floor():
 				player_colliding.velocity.y = -600
 	else:

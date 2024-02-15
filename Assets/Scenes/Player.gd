@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+@onready var step_sound = $AudioStreamPlayer2D
 @onready var big_sprite = $BigAnimatedSprite
 @onready var small_sprite = $SmallAnimatedSprite
 @onready var big_collider = $BigCollider
@@ -104,3 +104,14 @@ func game_over():
 
 func _on_water_collider_body_entered(body):
 	game_over()
+
+
+func _on_big_animated_sprite_frame_changed():
+	if big_sprite.animation == "Walk" && armored:
+		if big_sprite.frame == 3 || big_sprite.frame == 7:
+			step_sound.play()
+
+
+#func _on_big_animated_sprite_animation_changed():
+	#if big_sprite.animation == "Walk":
+	#	print("treash")
