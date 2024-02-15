@@ -7,6 +7,7 @@ extends CharacterBody2D
 @onready var big_lights = $BigLights
 @onready var small_lights = $SmallLights
 @onready var water_collider = $WaterCollider
+@onready var death_splash = $CanvasLayer
 
 const SPEED = 250.0
 const JUMP_VELOCITY = -325.0
@@ -96,6 +97,10 @@ func delayed_smash():
 func _on_big_animated_sprite_animation_finished():
 	anim_locked = false
 
+func game_over():
+	death_splash.visible = true
+	await get_tree().create_timer(1).timeout
+	get_tree().call_deferred("reload_current_scene")
 
 func _on_water_collider_body_entered(body):
-	get_tree().reload_current_scene()
+	game_over()

@@ -65,4 +65,5 @@ func _physics_process(delta):
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("Player"):
 		print("ddd hit player")
-		get_tree().reload_current_scene()
+		body.game_over()
+		#get_tree().reload_current_scene()
