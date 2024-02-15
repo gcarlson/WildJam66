@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://bfbr7k2y4fs40"]
+[gd_scene load_steps=45 format=3 uid="uid://bfbr7k2y4fs40"]
 
 [ext_resource type="Script" path="res://Assets/Scenes/Player.gd" id="1_glxh4"]
 [ext_resource type="Texture2D" uid="uid://p5fcha3vju8g" path="res://Assets/Sprites/Characters/PlayerAnimations/updated-idle.png" id="2_kws6x"]
@@ -261,6 +261,9 @@ fill_from = Vector2(0.5, 0.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h7p71"]
 size = Vector2(8, 8)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s55hy"]
+size = Vector2(10, 45)
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_glxh4")
 
@@ -371,6 +374,12 @@ text = "YOU DIED"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_fh8cn")
+
+[node name="ArmorDetector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ArmorDetector"]
+position = Vector2(0, 8.5)
+shape = SubResource("RectangleShape2D_s55hy")
 
 [connection signal="animation_changed" from="BigAnimatedSprite" to="." method="_on_big_animated_sprite_animation_changed"]
 [connection signal="animation_finished" from="BigAnimatedSprite" to="." method="_on_big_animated_sprite_animation_finished"]

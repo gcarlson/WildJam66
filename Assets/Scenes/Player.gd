@@ -8,6 +8,7 @@ extends CharacterBody2D
 @onready var small_lights = $SmallLights
 @onready var water_collider = $WaterCollider
 @onready var death_splash = $CanvasLayer
+@onready var armor_detector = $ArmorDetector
 
 const SPEED = 250.0
 const JUMP_VELOCITY = -325.0
@@ -46,7 +47,7 @@ func _physics_process(delta):
 		#for x in range(-16, 17, 16):
 		#	tilemap.erase_cell(0, tilemap.local_to_map(global_position + Vector2(x, 36)))
 		
-	if Input.is_action_just_pressed("switch_form"):
+	if Input.is_action_just_pressed("switch_form") and (armored or not armor_detector.overlaps_body(tilemap)):
 		armored = not armored
 		water_collider.position.y = 0 if armored else 26
 		
