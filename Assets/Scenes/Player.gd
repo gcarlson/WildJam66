@@ -33,6 +33,8 @@ func _physics_process(delta):
 	# Handle jump.
 	if not armored and Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+	if armored and Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		velocity.y = JUMP_VELOCITY*.7
 		
 	if armored and Input.is_action_just_pressed("ability_1") and !anim_locked:
 		#print("ddd tile: ", tilemap.local_to_map(global_position + Vector2(0, 36)))
@@ -62,7 +64,10 @@ func _physics_process(delta):
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis("ui_left", "ui_right")
 	if direction:
-		velocity.x = direction * SPEED
+		if armored:
+			velocity.x = direction * SPEED * .7
+		else:
+			velocity.x = direction * SPEED
 		big_sprite.flip_h = (direction < 0)
 		small_sprite.flip_h = (direction < 0)
 		if not anim_locked and armored:
