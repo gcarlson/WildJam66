@@ -25,15 +25,11 @@ shape = SubResource("CircleShape2D_pied8")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_7hgpf")
 
-[node name="Node2D" type="Node2D" parent="."]
-
-[node name="RayCast2D" type="RayCast2D" parent="Node2D"]
-target_position = Vector2(40, 0)
-
-[node name="RayCast2D2" type="RayCast2D" parent="Node2D"]
-target_position = Vector2(7, 39)
-
-[node name="RayCast2D3" type="RayCast2D" parent="Node2D"]
-target_position = Vector2(7, -39)
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 5.0
+radius = 100.0
+avoidance_layers = 2
+avoidance_mask = 2
+debug_enabled = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

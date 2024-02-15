@@ -1,9 +1,6 @@
 extends CharacterBody2D
 
-@onready var rays = $Node2D
-@onready var forwardray = $Node2D/RayCast2D
-@onready var rightray = $Node2D/RayCast2D2
-@onready var leftray = $Node2D/RayCast2D3
+@onready var navAgent = $NavigationAgent2D
 
 const SPEED = 60
 const JUMP_VELOCITY = -400.0
@@ -26,16 +23,8 @@ func _ready():
 
 func _physics_process(delta):
 	if aggroed:
-		var target = player.global_position + Vector2(0, 0 if player.armored else 24.5)
-		rays.look_at(target)
-		if (target - global_position).length() < 60 or not forwardray.is_colliding():
-			velocity = (target - global_position).normalized() * SPEED
-		elif not rightray.is_colliding():
-			velocity = (target - global_position).normalized().rotated(PI / 3) * SPEED
-		elif not leftray.is_colliding():
-			velocity = (target - global_position).normalized().rotated(-PI / 3) * SPEED
-		else:
-			velocity = (target - global_position).normalized() * SPEED
+		navAgent.target_position = player.global_position + Vector2(0, 0.0 if player.armored else 24.5)
+		velocity = (navAgent.get_next_path_position() - global_position).normalized() * SPEED
 		move_and_slide()
 
 func _on_area_2d_body_entered(body):

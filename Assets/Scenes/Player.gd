@@ -6,6 +6,7 @@ extends CharacterBody2D
 @onready var small_collider = $SmallCollider
 @onready var big_lights = $BigLights
 @onready var small_lights = $SmallLights
+@onready var water_collider = $WaterCollider
 
 const SPEED = 250.0
 const JUMP_VELOCITY = -325.0
@@ -46,6 +47,7 @@ func _physics_process(delta):
 		
 	if Input.is_action_just_pressed("switch_form"):
 		armored = not armored
+		water_collider.position.y = 0 if armored else 26
 		
 		big_sprite.visible = armored
 		big_collider.disabled = not armored
@@ -93,3 +95,7 @@ func delayed_smash():
 
 func _on_big_animated_sprite_animation_finished():
 	anim_locked = false
+
+
+func _on_water_collider_body_entered(body):
+	get_tree().reload_current_scene()

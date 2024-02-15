@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://bfbr7k2y4fs40"]
+[gd_scene load_steps=43 format=3 uid="uid://bfbr7k2y4fs40"]
 
 [ext_resource type="Script" path="res://Assets/Scenes/Player.gd" id="1_glxh4"]
 [ext_resource type="Texture2D" uid="uid://p5fcha3vju8g" path="res://Assets/Sprites/Characters/PlayerAnimations/updated-idle.png" id="2_kws6x"]
@@ -257,11 +257,14 @@ gradient = SubResource("Gradient_w8e8a")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h7p71"]
+size = Vector2(8, 8)
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_glxh4")
 
 [node name="BigCollider" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 8.5)
+position = Vector2(0, 8.5)
 shape = SubResource("RectangleShape2D_0w0vx")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -326,4 +329,12 @@ range_layer_max = 5
 texture = SubResource("GradientTexture2D_rnnon")
 texture_scale = 4.5
 
+[node name="WaterCollider" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterCollider"]
+shape = SubResource("RectangleShape2D_h7p71")
+
 [connection signal="animation_finished" from="BigAnimatedSprite" to="." method="_on_big_animated_sprite_animation_finished"]
+[connection signal="body_entered" from="WaterCollider" to="." method="_on_water_collider_body_entered"]
