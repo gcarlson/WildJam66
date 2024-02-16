@@ -1,30 +1,34 @@
-[gd_scene load_steps=4 format=3 uid="uid://86d2iovn0pme"]
+[gd_scene load_steps=7 format=3 uid="uid://86d2iovn0pme"]
 
 [ext_resource type="Script" path="res://Assets/Scenes/Enemy.gd" id="1_1o46a"]
+[ext_resource type="Texture2D" uid="uid://c1o0undg2ygyp" path="res://Assets/Sprites/Characters/Enemies/Mole.png" id="2_bew1n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mfy7l"]
-size = Vector2(16, 16)
+size = Vector2(24, 22)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cpd4d"]
-size = Vector2(22, 22)
+size = Vector2(28, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4p5w"]
+atlas = ExtResource("2_bew1n")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fc52c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i4p5w")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [node name="Mole" type="CharacterBody2D"]
 script = ExtResource("1_1o46a")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -8.0
-offset_top = -8.0
-offset_right = 8.0
-offset_bottom = 8.0
-grow_horizontal = 2
-grow_vertical = 2
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_mfy7l")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
@@ -49,6 +53,11 @@ text = "[center]![/center]"
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_cpd4d")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_fc52c")
+animation = &"idle"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

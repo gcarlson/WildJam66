@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @onready var ray = $RayCast2D
 @onready var reaction = $RichTextLabel
+@onready var sprite = $AnimatedSprite2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -50,6 +51,7 @@ func _physics_process(delta):
 		else:
 			if abs(player.global_position.x - global_position.x) > 8:
 				facing_right = (player.global_position.x > global_position.x)
+				sprite.flip_h = not facing_right
 			velocity.x = 15 if facing_right else -15
 
 	if is_lit():

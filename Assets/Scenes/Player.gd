@@ -1,6 +1,7 @@
 extends CharacterBody2D
 @onready var step_sound = $AudioStreamPlayer2D
 @onready var big_sprite = $BigAnimatedSprite
+@onready var smash_sprite = $SlamSprite
 @onready var small_sprite = $SmallAnimatedSprite
 @onready var big_collider = $BigCollider
 @onready var small_collider = $SmallCollider
@@ -47,6 +48,7 @@ func _physics_process(delta):
 	if armored and Input.is_action_just_pressed("ability_1") and !anim_locked:
 		#print("ddd tile: ", tilemap.local_to_map(global_position + Vector2(0, 36)))
 		big_sprite.play("Smash")
+		smash_sprite.play("slam")
 		delayed_smash()
 		anim_locked = true
 		#for x in range(-16, 17, 16):
@@ -96,7 +98,10 @@ func _physics_process(delta):
 func delayed_smash():
 	await get_tree().create_timer(0.65).timeout
 	for x in range(-16, 17, 16):
-		tilemap.erase_cell(0, tilemap.local_to_map(global_position + Vector2(x, 36)))
+		var tile = tilemap.local_to_map(global_position + Vector2(x, 36))
+		print("ddd tile: ", tilemap.get_cell_atlas_coords(0, tile))
+		if (tilemap.get_cell_atlas_coords(0, tile) == Vector2i(14, 0)):
+			tilemap.erase_cell(0, tile)
 		
 	print("After timout")
 

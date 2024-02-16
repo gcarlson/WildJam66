@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://bfbr7k2y4fs40"]
+[gd_scene load_steps=52 format=3 uid="uid://bfbr7k2y4fs40"]
 
 [ext_resource type="Script" path="res://Assets/Scenes/Player.gd" id="1_glxh4"]
 [ext_resource type="Texture2D" uid="uid://p5fcha3vju8g" path="res://Assets/Sprites/Characters/PlayerAnimations/updated-idle.png" id="2_kws6x"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bquwp2vw66nqj" path="res://Assets/Sprites/Characters/PlayerAnimations/FIXEDwalk2.png" id="4_4gtk3"]
 [ext_resource type="Texture2D" uid="uid://ci86smgk2lxbi" path="res://Assets/Sprites/Characters/PlayerAnimations/SmallFireBoiIdle.png" id="5_722p4"]
 [ext_resource type="AudioStream" uid="uid://c6ybh4q7a1ioa" path="res://Assets/Sounds/Step2.wav" id="6_fh8cn"]
+[ext_resource type="Texture2D" uid="uid://dhsjn5yra8xj4" path="res://Assets/Sprites/Effects/Slammination.png" id="7_88dve"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0w0vx"]
 size = Vector2(22, 47)
@@ -264,6 +265,67 @@ size = Vector2(8, 8)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s55hy"]
 size = Vector2(10, 45)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_1opts"]
+atlas = ExtResource("7_88dve")
+region = Rect2(0, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0bja0"]
+atlas = ExtResource("7_88dve")
+region = Rect2(96, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wsab6"]
+atlas = ExtResource("7_88dve")
+region = Rect2(192, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06a3f"]
+atlas = ExtResource("7_88dve")
+region = Rect2(288, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ypcxx"]
+atlas = ExtResource("7_88dve")
+region = Rect2(384, 0, 96, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s7jp6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1opts")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0bja0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wsab6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06a3f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ypcxx")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"slam",
+"speed": 5.0
+}]
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_glxh4")
 
@@ -412,6 +474,12 @@ stream = ExtResource("6_fh8cn")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ArmorDetector"]
 position = Vector2(0, 8.5)
 shape = SubResource("RectangleShape2D_s55hy")
+
+[node name="SlamSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 16)
+sprite_frames = SubResource("SpriteFrames_s7jp6")
+animation = &"slam"
+speed_scale = 2.0
 
 [connection signal="animation_changed" from="BigAnimatedSprite" to="." method="_on_big_animated_sprite_animation_changed"]
 [connection signal="animation_finished" from="BigAnimatedSprite" to="." method="_on_big_animated_sprite_animation_finished"]
