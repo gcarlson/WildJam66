@@ -19,6 +19,7 @@ var scenes = ["res://Assets/Scenes/level_2.tscn", "res://Assets/Scenes/level_3.t
 
 const SPEED = 250.0
 const JUMP_VELOCITY = -325.0
+const SQUAT_DUR = 0.1
 
 var armored = true
 var active_sprite = big_sprite
@@ -34,11 +35,6 @@ func _ready():
 	tilemap = get_tree().get_first_node_in_group("Tilemap")
 
 func _physics_process(delta):
-	#if Input.is_action_just_pressed("ui_cancel"):
-	#	get_tree().paused = not get_tree().paused
-	#	pause_screen.visible = get_tree().paused
-		
-	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -46,10 +42,8 @@ func _physics_process(delta):
 		last_ground = global_position
 
 	# Handle jump.
-	if not armored and Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-	if armored and Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY*.7
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		delayed_jump()
 		
 	if armored and Input.is_action_just_pressed("ability_1") and !anim_locked:
 		#print("ddd tile: ", tilemap.local_to_map(global_position + Vector2(0, 36)))
@@ -100,6 +94,12 @@ func _physics_process(delta):
 
 	move_and_slide()
 	
+func delayed_jump():
+	velocity.y = JUMP_VELOCITY if not armored else 0.7 * JUMP_VELOCITY
+	await get_tree().create_timer(SQUAT_DUR).timeout
+	print("ddd squat over ", Input.is_action_pressed("ui_accept"), " ", velocity.y)
+	if not Input.is_action_pressed("ui_accept") and not armored:
+		velocity.y = JUMP_VELOCITY * 0.3
 
 func delayed_smash():
 	await get_tree().create_timer(0.65).timeout
