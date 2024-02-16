@@ -476,6 +476,7 @@ position = Vector2(0, 8.5)
 shape = SubResource("RectangleShape2D_s55hy")
 
 [node name="SlamSprite" type="AnimatedSprite2D" parent="."]
+z_index = 1
 position = Vector2(0, 16)
 sprite_frames = SubResource("SpriteFrames_s7jp6")
 animation = &"slam"
