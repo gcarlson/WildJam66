@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://bfbr7k2y4fs40"]
+[gd_scene load_steps=53 format=3 uid="uid://bfbr7k2y4fs40"]
 
 [ext_resource type="Script" path="res://Assets/Scenes/Player.gd" id="1_glxh4"]
 [ext_resource type="Texture2D" uid="uid://p5fcha3vju8g" path="res://Assets/Sprites/Characters/PlayerAnimations/updated-idle.png" id="2_kws6x"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bquwp2vw66nqj" path="res://Assets/Sprites/Characters/PlayerAnimations/FIXEDwalk2.png" id="4_4gtk3"]
 [ext_resource type="Texture2D" uid="uid://ci86smgk2lxbi" path="res://Assets/Sprites/Characters/PlayerAnimations/SmallFireBoiIdle.png" id="5_722p4"]
 [ext_resource type="AudioStream" uid="uid://c6ybh4q7a1ioa" path="res://Assets/Sounds/Step2.wav" id="6_fh8cn"]
+[ext_resource type="Script" path="res://Assets/Scenes/PauseScreen.gd" id="6_vv26t"]
 [ext_resource type="Texture2D" uid="uid://dhsjn5yra8xj4" path="res://Assets/Sprites/Effects/Slammination.png" id="7_88dve"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0w0vx"]
@@ -465,6 +466,96 @@ offset_bottom = 18.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "LEVEL COMPLETE"
+
+[node name="PauseScreen" type="CanvasLayer" parent="."]
+process_mode = 3
+layer = 5
+visible = false
+script = ExtResource("6_vv26t")
+
+[node name="ColorRect" type="ColorRect" parent="PauseScreen"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 733.0
+offset_bottom = 412.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.815686)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PauseScreen"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.5
+offset_top = -101.215
+offset_right = 35.5
+offset_bottom = -72.2151
+grow_horizontal = 2
+grow_vertical = 2
+text = "PAUSED"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="PauseScreen"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.0
+offset_top = -70.0
+offset_right = 127.0
+offset_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 2
+text = ">RESUME<"
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="PauseScreen"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.0
+offset_top = -36.0
+offset_right = 127.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "RESTART"
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="PauseScreen"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -2.0
+offset_right = 112.0
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "CONTROLS"
+
+[node name="RichTextLabel5" type="RichTextLabel" parent="PauseScreen"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = 31.0
+offset_right = 142.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "CONTROLS	"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_fh8cn")

@@ -10,6 +10,7 @@ extends CharacterBody2D
 @onready var water_collider = $WaterCollider
 @onready var death_splash = $CanvasLayer
 @onready var level_splash = $CanvasLayer2
+@onready var pause_screen = $PauseScreen
 @onready var armor_detector = $ArmorDetector
 
 @export var level : int
@@ -33,6 +34,11 @@ func _ready():
 	tilemap = get_tree().get_first_node_in_group("Tilemap")
 
 func _physics_process(delta):
+	#if Input.is_action_just_pressed("ui_cancel"):
+	#	get_tree().paused = not get_tree().paused
+	#	pause_screen.visible = get_tree().paused
+		
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
