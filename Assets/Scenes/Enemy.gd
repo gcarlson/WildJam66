@@ -13,7 +13,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var player
 var aggroed = false
 
-var facing_right = true
+@export var facing_right = true
 var tunnel_cooldown = 5
 var tunnel_dur = -1
 var tunnel_target
@@ -22,6 +22,7 @@ var tunnel_target
 func _ready():
 	print("ddd init")
 	player = get_tree().get_first_node_in_group("Player")
+	sprite.flip_h = not facing_right
 	
 func is_lit():
 	for x in get_tree().get_nodes_in_group("Lights"):

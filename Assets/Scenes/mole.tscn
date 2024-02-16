@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c1o0undg2ygyp" path="res://Assets/Sprites/Characters/Enemies/Mole.png" id="2_bew1n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mfy7l"]
-size = Vector2(24, 22)
+size = Vector2(24, 18)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cpd4d"]
 size = Vector2(28, 24)
@@ -28,7 +28,7 @@ animations = [{
 script = ExtResource("1_1o46a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 5)
+position = Vector2(0, 7)
 shape = SubResource("RectangleShape2D_mfy7l")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
