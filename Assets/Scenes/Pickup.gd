@@ -19,4 +19,8 @@ func _on_body_entered(body):
 		print("ddd pickup")
 		player = body
 		#body.add_child(self)
-	
+
+func _on_area_entered(area):
+	print("ddd area entered")
+	if area.is_in_group("Balloons"):
+		player.complete_level()

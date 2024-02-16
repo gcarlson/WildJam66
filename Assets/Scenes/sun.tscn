@@ -50,4 +50,5 @@ range_layer_max = 5
 texture = SubResource("GradientTexture2D_0a4ma")
 texture_scale = 4.5
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

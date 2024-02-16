@@ -8,7 +8,12 @@ extends CharacterBody2D
 @onready var small_lights = $SmallLights
 @onready var water_collider = $WaterCollider
 @onready var death_splash = $CanvasLayer
+@onready var level_splash = $CanvasLayer2
 @onready var armor_detector = $ArmorDetector
+
+@export var level : int
+
+var scenes = ["res://Assets/Scenes/level_2.tscn", "res://Assets/Scenes/level_3.tscn"]
 
 const SPEED = 250.0
 const JUMP_VELOCITY = -325.0
@@ -102,6 +107,11 @@ func game_over():
 	death_splash.visible = true
 	await get_tree().create_timer(1).timeout
 	get_tree().call_deferred("reload_current_scene")
+	
+func complete_level():
+	level_splash.visible = true
+	await get_tree().create_timer(1).timeout
+	get_tree().change_scene_to_file(scenes[level - 1])
 
 func _on_water_collider_body_entered(body):
 	game_over()
