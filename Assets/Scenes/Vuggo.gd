@@ -34,7 +34,9 @@ func _physics_process(delta):
 		light_time += delta
 		if light_time > 1.0 and light_time - delta <= 1.0:
 			if player_colliding and player_colliding.is_on_floor():
+				
 				player_colliding.velocity.y = -600
+				
 	else:
 		velocity.x = -30 if facing_left else 30
 		light_time = 0
@@ -43,8 +45,7 @@ func _physics_process(delta):
 
 func _on_area_2d_body_entered(body):
 	facing_left = not facing_left
-	print ("slapa")
-	sprite.flip_h = not facing_left
+	sprite.flip_h = facing_left
 	nosecol.position.x = -15 if facing_left else 15
 
 func _on_area_2d_2_body_entered(body):
