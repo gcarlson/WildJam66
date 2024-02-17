@@ -55,6 +55,7 @@ polygon = PackedVector2Array(0, 1, 40, 1, 40, -19, 0, -19)
 
 [node name="Player" parent="." instance=ExtResource("1_fph8l")]
 position = Vector2(153, 297)
+level = 1
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 position = Vector2(4, -2)

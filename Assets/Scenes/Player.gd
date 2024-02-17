@@ -12,10 +12,11 @@ extends CharacterBody2D
 @onready var level_splash = $CanvasLayer2
 @onready var pause_screen = $PauseScreen
 @onready var armor_detector = $ArmorDetector
+@onready var level_text = $CanvasLayer2/RichTextLabel
 
 @export var level : int
 
-var scenes = ["res://Assets/Scenes/level_2.tscn", "res://Assets/Scenes/level_3.tscn"]
+var scenes = ["res://Assets/Scenes/level_2.tscn", "res://Assets/Scenes/level_1.tscn", "res://Assets/Scenes/level_3.tscn", "res://Assets/Scenes/home_page.tscn"]
 
 const SPEED = 250.0
 const JUMP_VELOCITY = -325.0
@@ -126,9 +127,11 @@ func game_over():
 func complete_level():
 	frozen = true
 	await get_tree().create_timer(4).timeout
+	if level == 3:
+		level_text.text = "[center]Thanks For Playing!"
 	level_splash.visible = true
-	await get_tree().create_timer(1).timeout
-	get_tree().change_scene_to_file(scenes[level - 1])
+	await get_tree().create_timer(4).timeout
+	get_tree().change_scene_to_file(scenes[level])
 
 func _on_water_collider_body_entered(body):
 	game_over()
