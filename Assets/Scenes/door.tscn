@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://byddm6v701cuj"]
 
 [ext_resource type="Script" path="res://Assets/Scenes/Door.gd" id="1_fed8m"]
-[ext_resource type="Texture2D" uid="uid://70t22cp5dset" path="res://Assets/Sprites/Interactables/DoorClosed.png" id="2_jq0ks"]
+[ext_resource type="Texture2D" uid="uid://b8s1t1qshfqla" path="res://Assets/Sprites/Interactables/DoorRedone.png" id="2_65o2s"]
 [ext_resource type="Texture2D" uid="uid://duk6pi36s4oxk" path="res://Assets/Sprites/Interactables/DoorOpen.png" id="3_piwce"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_em013"]
@@ -10,9 +10,9 @@ size = Vector2(10, 54.5)
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_m8y8h"]
 polygon = PackedVector2Array(-4, 32, -4, -22, 6, -22, 6, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xoxuq"]
-atlas = ExtResource("2_jq0ks")
-region = Rect2(0, 0, 4, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_lwldg"]
+atlas = ExtResource("2_65o2s")
+region = Rect2(0, 0, 16, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c3e0y"]
 atlas = ExtResource("3_piwce")
@@ -22,7 +22,7 @@ region = Rect2(0, 0, 16, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xoxuq")
+"texture": SubResource("AtlasTexture_lwldg")
 }],
 "loop": true,
 "name": &"closed",
@@ -48,6 +48,5 @@ shape = SubResource("RectangleShape2D_em013")
 occluder = SubResource("OccluderPolygon2D_m8y8h")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_7kipw")
 animation = &"closed"

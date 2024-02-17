@@ -106,6 +106,7 @@ texture = ExtResource("1_ma48s")
 7:0/0/physics_layer_2/linear_velocity = Vector2(0, 0)
 7:0/0/physics_layer_2/angular_velocity = 0.0
 8:0/0 = 0
+8:0/0/z_index = 2
 8:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_nq8xh")
 8:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 8:0/0/physics_layer_0/angular_velocity = 0.0
