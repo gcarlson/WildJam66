@@ -22,7 +22,7 @@ func _ready():
 	player = get_tree().get_first_node_in_group("Player")
 
 func _physics_process(delta):
-	if aggroed:
+	if aggroed and not player.safe:
 		navAgent.target_position = player.global_position + Vector2(0, 0.0 if player.armored else 24.5)
 		velocity = (navAgent.get_next_path_position() - global_position).normalized() * SPEED
 		move_and_slide()

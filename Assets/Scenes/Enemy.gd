@@ -38,7 +38,9 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
-	if aggroed:
+	if player.safe:
+		velocity.x = 0
+	elif aggroed:
 		tunnel_cooldown -= delta
 		if tunnel_cooldown < 0:
 			tunnel_cooldown = 5
