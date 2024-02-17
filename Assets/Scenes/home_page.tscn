@@ -1,0 +1,158 @@
+[gd_scene load_steps=3 format=3 uid="uid://cuge8cytvl0vh"]
+
+[ext_resource type="Script" path="res://Assets/Scenes/home_page.gd" id="1_ppya4"]
+[ext_resource type="Script" path="res://Assets/Scenes/LevelMenu.gd" id="2_ipp4i"]
+
+[node name="HomePage" type="Node2D"]
+
+[node name="MainMenu" type="CanvasLayer" parent="."]
+script = ExtResource("1_ppya4")
+
+[node name="ColorRect" type="ColorRect" parent="MainMenu"]
+offset_right = 1188.0
+offset_bottom = 675.0
+color = Color(0, 0, 0, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MainMenu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.5
+offset_top = -78.65
+offset_right = 68.5
+offset_bottom = -51.6401
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center]Heat Rises"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="MainMenu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.5
+offset_top = -13.5049
+offset_right = 68.5
+offset_bottom = 13.5049
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center]>New Game<"
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="MainMenu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.5
+offset_top = 22.825
+offset_right = 68.5
+offset_bottom = 49.8349
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center]Level Select"
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="MainMenu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.5
+offset_top = 58.555
+offset_right = 68.5
+offset_bottom = 85.5649
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center]Credits"
+
+[node name="LevelMenu" type="CanvasLayer" parent="."]
+visible = false
+script = ExtResource("2_ipp4i")
+
+[node name="ColorRect" type="ColorRect" parent="LevelMenu"]
+offset_right = 1188.0
+offset_bottom = 675.0
+color = Color(0, 0, 0, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="LevelMenu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.5
+offset_top = -78.65
+offset_right = 68.5
+offset_bottom = -51.6401
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center]Levels"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="LevelMenu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.5
+offset_top = -13.5049
+offset_right = 68.5
+offset_bottom = 13.5049
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center]>Level 1<"
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="LevelMenu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.5
+offset_top = 22.825
+offset_right = 68.5
+offset_bottom = 49.8349
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center]Level 2"
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="LevelMenu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.5
+offset_top = 58.555
+offset_right = 68.5
+offset_bottom = 85.5649
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center]Level 3"
+
+[node name="RichTextLabel5" type="RichTextLabel" parent="LevelMenu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.5
+offset_top = 92.865
+offset_right = 68.5
+offset_bottom = 119.875
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center]Back"
