@@ -7,6 +7,8 @@ extends CharacterBody2D
 @onready var collider = $CollisionShape2D
 @onready var hitbox = $Area2D/CollisionShape2D
 
+@onready var stun_sprite = $AnimatedSprite2D2
+
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
@@ -75,10 +77,12 @@ func _physics_process(delta):
 func stun():
 	print("stunning mole")
 	stunned = true
+	stun_sprite.visible = true
 	sprite.pause()
 	await get_tree().create_timer(2.5).timeout
 	stunned = false
 	sprite.play()
+	stun_sprite.visible = false
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("Player"):

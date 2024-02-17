@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @onready var navAgent = $NavigationAgent2D
 @onready var sprite = $AnimatedSprite2D
+@onready var stun_sprite = $AnimatedSprite2D2
 
 const SPEED = 60
 const JUMP_VELOCITY = -400.0
@@ -26,10 +27,12 @@ func aggro():
 func stun():
 	print("stunning bat")
 	stunned = true
+	stun_sprite.visible = true
 	sprite.pause()
 	await get_tree().create_timer(2.5).timeout
 	stunned = false
 	sprite.play()
+	stun_sprite.visible = false
 
 func _physics_process(delta):
 	if not stunned and aggroed and not player.safe:

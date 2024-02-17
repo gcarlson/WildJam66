@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://bfbr7k2y4fs40"]
+[gd_scene load_steps=71 format=3 uid="uid://bfbr7k2y4fs40"]
 
 [ext_resource type="Script" path="res://Assets/Scenes/Player.gd" id="1_glxh4"]
 [ext_resource type="Texture2D" uid="uid://p5fcha3vju8g" path="res://Assets/Sprites/Characters/PlayerAnimations/updated-idle.png" id="2_kws6x"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://bquwp2vw66nqj" path="res://Assets/Sprites/Characters/PlayerAnimations/FIXEDwalk2.png" id="4_4gtk3"]
 [ext_resource type="Texture2D" uid="uid://ci86smgk2lxbi" path="res://Assets/Sprites/Characters/PlayerAnimations/SmallFireBoiIdle.png" id="5_722p4"]
 [ext_resource type="AudioStream" uid="uid://c6ybh4q7a1ioa" path="res://Assets/Sounds/Step2.wav" id="6_fh8cn"]
+[ext_resource type="Texture2D" uid="uid://cppwtd7gcsagc" path="res://Assets/Sprites/Characters/PlayerAnimations/Smallboimove.png" id="6_fn1eq"]
+[ext_resource type="Texture2D" uid="uid://dt720grepir5q" path="res://Assets/Sprites/Characters/Enemies/EnemyAnimations/Dash.png" id="6_vcq2e"]
 [ext_resource type="Script" path="res://Assets/Scenes/PauseScreen.gd" id="6_vv26t"]
 [ext_resource type="Texture2D" uid="uid://dhsjn5yra8xj4" path="res://Assets/Sprites/Effects/Slammination.png" id="7_88dve"]
 
@@ -225,6 +227,66 @@ region = Rect2(72, 0, 14, 26)
 atlas = ExtResource("5_722p4")
 region = Rect2(90, 0, 14, 26)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_y84ok"]
+atlas = ExtResource("6_vcq2e")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6nctt"]
+atlas = ExtResource("6_vcq2e")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_in6yf"]
+atlas = ExtResource("6_vcq2e")
+region = Rect2(96, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wtb4u"]
+atlas = ExtResource("6_vcq2e")
+region = Rect2(144, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_knh35"]
+atlas = ExtResource("6_vcq2e")
+region = Rect2(192, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hg2l1"]
+atlas = ExtResource("6_vcq2e")
+region = Rect2(240, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhab3"]
+atlas = ExtResource("6_vcq2e")
+region = Rect2(288, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tkjha"]
+atlas = ExtResource("6_fn1eq")
+region = Rect2(0, 0, 26, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6q2i"]
+atlas = ExtResource("6_fn1eq")
+region = Rect2(26, 0, 26, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8vtk7"]
+atlas = ExtResource("6_fn1eq")
+region = Rect2(52, 0, 26, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p6r0m"]
+atlas = ExtResource("6_fn1eq")
+region = Rect2(78, 0, 26, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3mrk8"]
+atlas = ExtResource("6_fn1eq")
+region = Rect2(104, 0, 26, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j4mi4"]
+atlas = ExtResource("6_fn1eq")
+region = Rect2(130, 0, 26, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pqtq7"]
+atlas = ExtResource("6_fn1eq")
+region = Rect2(156, 0, 26, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ryx2j"]
+atlas = ExtResource("6_fn1eq")
+region = Rect2(182, 0, 26, 26)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_dlm6x"]
 animations = [{
 "frames": [{
@@ -249,6 +311,61 @@ animations = [{
 "loop": true,
 "name": &"Idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y84ok")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6nctt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_in6yf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wtb4u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_knh35")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hg2l1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lhab3")
+}],
+"loop": false,
+"name": &"dash",
+"speed": 40.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tkjha")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t6q2i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8vtk7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p6r0m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3mrk8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j4mi4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pqtq7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ryx2j")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 8.0
 }]
 
 [sub_resource type="Gradient" id="Gradient_slfyx"]
@@ -358,9 +475,8 @@ speed_scale = 2.0
 z_index = 1
 position = Vector2(0, 19)
 sprite_frames = SubResource("SpriteFrames_dlm6x")
-animation = &"Idle"
+animation = &"dash"
 autoplay = "Idle"
-frame_progress = 0.956607
 
 [node name="BigLights" type="Node2D" parent="."]
 visible = false

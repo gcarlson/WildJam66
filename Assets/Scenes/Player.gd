@@ -70,7 +70,9 @@ func _physics_process(delta):
 		elif can_dash:
 			dashing = true
 			can_dash = false
+			small_sprite.play("dash")
 			stop_dash()
+			return
 		
 	if Input.is_action_just_pressed("switch_form") and (armored or not armor_detector.overlaps_body(tilemap)):
 		armored = not armored
@@ -99,6 +101,8 @@ func _physics_process(delta):
 			velocity.x = direction * SPEED
 		big_sprite.flip_h = (direction < 0)
 		small_sprite.flip_h = (direction < 0)
+		if not anim_locked and not armored:
+			small_sprite.play("walk")
 		if not anim_locked and armored:
 			big_sprite.play("Walk")
 			for x in get_tree().get_nodes_in_group("Bats"):
@@ -109,6 +113,7 @@ func _physics_process(delta):
 		#velocity.x = velocity.x / 2
 		if not anim_locked:
 			big_sprite.play("Idle")
+			small_sprite.play("Idle")
 
 	if frozen:
 		velocity.x = 0
