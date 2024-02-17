@@ -21,6 +21,8 @@ var scenes = ["res://Assets/Scenes/level_2.tscn", "res://Assets/Scenes/level_1.t
 const SPEED = 250.0
 const JUMP_VELOCITY = -325.0
 const SQUAT_DUR = 0.1
+const DASH_SPEED = 400
+const DASH_DURATION = 0.2
 
 var dashing = false
 var safe = false
@@ -41,7 +43,7 @@ func _ready():
 
 func _physics_process(delta):
 	if dashing:
-		velocity.x = -250 if big_sprite.flip_h else 250
+		velocity = Vector2(-DASH_SPEED if big_sprite.flip_h else DASH_SPEED, 0)
 		move_and_slide()
 		return
 	
@@ -119,7 +121,7 @@ func delayed_jump():
 		velocity.y = JUMP_VELOCITY * 0.3
 
 func stop_dash():
-	await get_tree().create_timer(0.35).timeout
+	await get_tree().create_timer(DASH_DURATION).timeout
 	dashing = false
 
 func delayed_smash():
