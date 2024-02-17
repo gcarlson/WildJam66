@@ -28,6 +28,7 @@ var tilemap
 
 var last_ground = Vector2(0, 0)
 var anim_locked = false
+var frozen = false
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -93,6 +94,8 @@ func _physics_process(delta):
 		if not anim_locked:
 			big_sprite.play("Idle")
 
+	if frozen:
+		velocity.x = 0
 	move_and_slide()
 	
 func delayed_jump():
@@ -121,6 +124,8 @@ func game_over():
 	get_tree().call_deferred("reload_current_scene")
 	
 func complete_level():
+	frozen = true
+	await get_tree().create_timer(4).timeout
 	level_splash.visible = true
 	await get_tree().create_timer(1).timeout
 	get_tree().change_scene_to_file(scenes[level - 1])

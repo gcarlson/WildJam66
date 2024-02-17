@@ -23,4 +23,7 @@ func _on_body_entered(body):
 func _on_area_entered(area):
 	print("ddd area entered")
 	if area.is_in_group("Balloons"):
+		visible = false
 		player.complete_level()
+		area.complete(player.level)
+		

@@ -1,15 +1,81 @@
-[gd_scene load_steps=2 format=3 uid="uid://cvoy65asqrbkp"]
+[gd_scene load_steps=13 format=3 uid="uid://cvoy65asqrbkp"]
+
+[ext_resource type="Texture2D" uid="uid://drm0qkplcee6r" path="res://Assets/Sprites/Interactables/Platform03.png" id="1_t32iw"]
+[ext_resource type="Script" path="res://Assets/Scenes/balloon.gd" id="1_xwdnt"]
+[ext_resource type="Texture2D" uid="uid://ush3ejvjrni1" path="res://Assets/Sprites/Interactables/Platform3.png" id="2_4mnrf"]
+[ext_resource type="Texture2D" uid="uid://bkirk2dpxng3e" path="res://Assets/Sprites/Interactables/Platform23.png" id="3_f8s2i"]
+[ext_resource type="Texture2D" uid="uid://6cinmmjlglyw" path="res://Assets/Sprites/Interactables/Platform33.png" id="4_du0qj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l6ujs"]
-size = Vector2(20, 60)
+size = Vector2(96, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8aoiw"]
+atlas = ExtResource("1_t32iw")
+region = Rect2(0, 0, 128, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jemxh"]
+atlas = ExtResource("2_4mnrf")
+region = Rect2(0, 0, 128, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8she"]
+atlas = ExtResource("3_f8s2i")
+region = Rect2(0, 0, 128, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tt86j"]
+atlas = ExtResource("4_du0qj")
+region = Rect2(0, 0, 128, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pclj3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8aoiw")
+}],
+"loop": true,
+"name": &"0suns",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jemxh")
+}],
+"loop": true,
+"name": &"1sun",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q8she")
+}],
+"loop": true,
+"name": &"2suns",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tt86j")
+}],
+"loop": true,
+"name": &"3suns",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oilsn"]
+size = Vector2(120, 12)
 
 [node name="Balloon" type="Area2D" groups=["Balloons"]]
+script = ExtResource("1_xwdnt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -16.5)
 shape = SubResource("RectangleShape2D_l6ujs")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -10.0
-offset_top = -30.0
-offset_right = 10.0
-offset_bottom = 30.0
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_pclj3")
+animation = &"3suns"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 10)
+shape = SubResource("RectangleShape2D_oilsn")
