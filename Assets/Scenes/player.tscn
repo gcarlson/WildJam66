@@ -331,6 +331,7 @@ animations = [{
 script = ExtResource("1_glxh4")
 
 [node name="BigCollider" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 8.5)
 shape = SubResource("RectangleShape2D_0w0vx")
 
@@ -338,11 +339,11 @@ shape = SubResource("RectangleShape2D_0w0vx")
 zoom = Vector2(3, 3)
 
 [node name="SmallCollider" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, 24.5)
 shape = SubResource("RectangleShape2D_as363")
 
 [node name="BigAnimatedSprite" type="AnimatedSprite2D" parent="."]
+visible = false
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_eo2u2")
 animation = &"Smash"
@@ -350,7 +351,6 @@ autoplay = "Idle"
 speed_scale = 2.0
 
 [node name="SmallAnimatedSprite" type="AnimatedSprite2D" parent="."]
-visible = false
 z_index = 1
 position = Vector2(0, 19)
 sprite_frames = SubResource("SpriteFrames_dlm6x")
@@ -359,6 +359,7 @@ autoplay = "Idle"
 frame_progress = 0.956607
 
 [node name="BigLights" type="Node2D" parent="."]
+visible = false
 
 [node name="PointLight2D2" type="PointLight2D" parent="BigLights"]
 position = Vector2(0, 12)
@@ -378,7 +379,6 @@ texture = SubResource("GradientTexture2D_rnnon")
 texture_scale = 2.0
 
 [node name="SmallLights" type="Node2D" parent="." groups=["Lights"]]
-visible = false
 position = Vector2(0, 25)
 
 [node name="PointLight2D" type="PointLight2D" parent="SmallLights"]
@@ -397,6 +397,7 @@ texture = SubResource("GradientTexture2D_rnnon")
 texture_scale = 4.5
 
 [node name="WaterCollider" type="Area2D" parent="."]
+position = Vector2(0, 26)
 collision_layer = 4
 collision_mask = 4
 

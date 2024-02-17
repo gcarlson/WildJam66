@@ -22,7 +22,7 @@ const JUMP_VELOCITY = -325.0
 const SQUAT_DUR = 0.1
 
 var safe = false
-var armored = true
+var armored = false
 var active_sprite = big_sprite
 var tilemap
 
