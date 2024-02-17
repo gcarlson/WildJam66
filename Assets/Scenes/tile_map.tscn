@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://4ffgmsejxsm"]
 
-[ext_resource type="Texture2D" uid="uid://d2ajswl4t5ir2" path="res://Assets/Sprites/Tilemaps/66-CaveSheet.png" id="1_vlj31"]
+[ext_resource type="Texture2D" uid="uid://coa3jb247vprd" path="res://Assets/Sprites/Tilemaps/66-CaveSheet.png" id="1_vlj31"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_0k5vc"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, 8, -8)
