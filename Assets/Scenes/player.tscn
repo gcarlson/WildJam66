@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://bfbr7k2y4fs40"]
+[gd_scene load_steps=54 format=3 uid="uid://bfbr7k2y4fs40"]
 
 [ext_resource type="Script" path="res://Assets/Scenes/Player.gd" id="1_glxh4"]
 [ext_resource type="Texture2D" uid="uid://p5fcha3vju8g" path="res://Assets/Sprites/Characters/PlayerAnimations/updated-idle.png" id="2_kws6x"]
@@ -327,6 +327,10 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ey4hj"]
+radius = 19.57
+height = 106.56
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_glxh4")
 
@@ -390,6 +394,7 @@ texture = SubResource("GradientTexture2D_rnnon")
 texture_scale = 4.5
 
 [node name="PointLight2D2" type="PointLight2D" parent="SmallLights"]
+position = Vector2(-4, 5)
 energy = 0.5
 range_layer_min = -5
 range_layer_max = 5
@@ -574,6 +579,13 @@ position = Vector2(0, 16)
 sprite_frames = SubResource("SpriteFrames_s7jp6")
 animation = &"slam"
 speed_scale = 2.0
+
+[node name="SlamHitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SlamHitbox"]
+position = Vector2(0, 25.23)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ey4hj")
 
 [connection signal="animation_changed" from="BigAnimatedSprite" to="." method="_on_big_animated_sprite_animation_changed"]
 [connection signal="animation_finished" from="BigAnimatedSprite" to="." method="_on_big_animated_sprite_animation_finished"]

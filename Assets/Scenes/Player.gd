@@ -13,6 +13,7 @@ extends CharacterBody2D
 @onready var pause_screen = $PauseScreen
 @onready var armor_detector = $ArmorDetector
 @onready var level_text = $CanvasLayer2/RichTextLabel
+@onready var stun_hitbox = $SlamHitbox
 
 @export var level : int
 
@@ -126,6 +127,9 @@ func stop_dash():
 
 func delayed_smash():
 	await get_tree().create_timer(0.65).timeout
+	for x in stun_hitbox.get_overlapping_bodies():
+		if x.is_in_group("Moles") or x.is_in_group("Bats"):
+			x.stun()
 	for x in range(-16, 17, 16):
 		var tile = tilemap.local_to_map(global_position + Vector2(x, 36))
 		print("ddd tile: ", tilemap.get_cell_atlas_coords(0, tile))

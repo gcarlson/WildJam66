@@ -15,6 +15,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var player
 var aggroed = false
+var stunned = false
 
 @export var facing_right = true
 var tunnel_cooldown = 5
@@ -38,10 +39,13 @@ func is_lit():
 	return false
 
 func _physics_process(delta):
+	if stunned:
+		return
+
 	# Add the gravity.
 	if not is_on_floor() and not burrowing:
 		velocity.y += gravity * delta
-
+		
 	if player.safe:
 		velocity.x = 0
 	elif aggroed:
@@ -68,7 +72,13 @@ func _physics_process(delta):
 
 	move_and_slide()
 
-
+func stun():
+	print("stunning mole")
+	stunned = true
+	sprite.pause()
+	await get_tree().create_timer(2.5).timeout
+	stunned = false
+	sprite.play()
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("Player"):

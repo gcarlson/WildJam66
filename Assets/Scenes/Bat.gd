@@ -11,6 +11,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var player
 var aggroed = false
+var stunned = false
 
 var facing_right = true
 
@@ -18,11 +19,20 @@ func _ready():
 	player = get_tree().get_first_node_in_group("Player")
 
 func aggro():
-	aggroed = true
-	sprite.play("pursue")
+	if not stunned:
+		aggroed = true
+		sprite.play("pursue")
+
+func stun():
+	print("stunning bat")
+	stunned = true
+	sprite.pause()
+	await get_tree().create_timer(2.5).timeout
+	stunned = false
+	sprite.play()
 
 func _physics_process(delta):
-	if aggroed and not player.safe:
+	if not stunned and aggroed and not player.safe:
 		navAgent.target_position = player.global_position + Vector2(0, 0.0 if player.armored else 24.5)
 		velocity = (navAgent.get_next_path_position() - global_position).normalized() * SPEED
 		sprite.flip_h = (velocity.x > 0)
