@@ -4,6 +4,9 @@ extends CharacterBody2D
 @onready var reaction = $RichTextLabel
 @onready var sprite = $AnimatedSprite2D
 
+@onready var collider = $CollisionShape2D
+@onready var hitbox = $Area2D/CollisionShape2D
+
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
@@ -17,6 +20,7 @@ var aggroed = false
 var tunnel_cooldown = 5
 var tunnel_dur = -1
 var tunnel_target
+var burrowing = false
 
 
 func _ready():
@@ -35,7 +39,7 @@ func is_lit():
 
 func _physics_process(delta):
 	# Add the gravity.
-	if not is_on_floor():
+	if not is_on_floor() and not burrowing:
 		velocity.y += gravity * delta
 
 	if player.safe:
@@ -44,14 +48,11 @@ func _physics_process(delta):
 		tunnel_cooldown -= delta
 		if tunnel_cooldown < 0:
 			tunnel_cooldown = 5
-			tunnel_dur = 0.5
-			tunnel_target = player.last_ground + Vector2(0, 16)
-		if tunnel_dur > 0:
+			burrowing = true
 			velocity.x = 0
-			tunnel_dur -= delta
-			if tunnel_dur <= 0:
-				position = tunnel_target
-		else:
+			tunnel_target = player.last_ground + Vector2(0, 16)
+			sprite.play("burrow")
+		elif not burrowing:
 			if abs(player.global_position.x - global_position.x) > 8:
 				facing_right = (player.global_position.x > global_position.x)
 				sprite.flip_h = not facing_right
@@ -67,8 +68,23 @@ func _physics_process(delta):
 
 	move_and_slide()
 
+
+
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("Player"):
 		print("ddd hit player")
 		body.game_over()
 		#get_tree().reload_current_scene()
+
+
+func _on_animated_sprite_2d_animation_finished():
+	if sprite.animation == "burrow":
+		sprite.play("unburrow")
+		position = tunnel_target
+		collider.disabled = true
+		hitbox.disabled = true
+	elif sprite.animation == "unburrow":
+		sprite.play("idle")
+		burrowing = false
+		collider.disabled = false
+		hitbox.disabled = false

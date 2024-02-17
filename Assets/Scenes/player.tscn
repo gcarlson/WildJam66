@@ -331,9 +331,9 @@ animations = [{
 script = ExtResource("1_glxh4")
 
 [node name="BigCollider" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, 8.5)
 shape = SubResource("RectangleShape2D_0w0vx")
+disabled = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)

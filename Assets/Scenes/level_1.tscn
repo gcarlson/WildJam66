@@ -292,9 +292,6 @@ shadow_enabled = true
 texture = SubResource("GradientTexture2D_wrngg")
 texture_scale = 50.0
 
-[node name="Sun2" parent="." instance=ExtResource("11_7lmhj")]
-position = Vector2(720, 39)
-
 [node name="Environmentals" type="Node2D" parent="."]
 
 [node name="Pot1" type="Sprite2D" parent="Environmentals"]

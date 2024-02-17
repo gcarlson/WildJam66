@@ -22,6 +22,7 @@ const SPEED = 250.0
 const JUMP_VELOCITY = -325.0
 const SQUAT_DUR = 0.1
 
+var dashing = false
 var safe = false
 var armored = false
 var active_sprite = big_sprite
@@ -30,6 +31,7 @@ var tilemap
 var last_ground = Vector2(0, 0)
 var anim_locked = false
 var frozen = false
+var can_dash = true
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -38,24 +40,34 @@ func _ready():
 	tilemap = get_tree().get_first_node_in_group("Tilemap")
 
 func _physics_process(delta):
+	if dashing:
+		velocity.x = -250 if big_sprite.flip_h else 250
+		move_and_slide()
+		return
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
-	elif not safe:
-		last_ground = global_position
+	else:
+		can_dash = true
+		if not safe:
+			last_ground = global_position
 
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		delayed_jump()
 		
-	if armored and Input.is_action_just_pressed("ability_1") and !anim_locked:
-		#print("ddd tile: ", tilemap.local_to_map(global_position + Vector2(0, 36)))
-		big_sprite.play("Smash")
-		smash_sprite.play("slam")
-		delayed_smash()
-		anim_locked = true
-		#for x in range(-16, 17, 16):
-		#	tilemap.erase_cell(0, tilemap.local_to_map(global_position + Vector2(x, 36)))
+	if Input.is_action_just_pressed("ability_1") and !anim_locked:
+		if armored:
+			#print("ddd tile: ", tilemap.local_to_map(global_position + Vector2(0, 36)))
+			big_sprite.play("Smash")
+			smash_sprite.play("slam")
+			delayed_smash()
+			anim_locked = true
+		elif can_dash:
+			dashing = true
+			can_dash = false
+			stop_dash()
 		
 	if Input.is_action_just_pressed("switch_form") and (armored or not armor_detector.overlaps_body(tilemap)):
 		armored = not armored
@@ -88,7 +100,7 @@ func _physics_process(delta):
 			big_sprite.play("Walk")
 			for x in get_tree().get_nodes_in_group("Bats"):
 				if (x.global_position - global_position).length() < 128:
-					x.aggroed = true
+					x.aggro()
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		#velocity.x = velocity.x / 2
@@ -105,6 +117,10 @@ func delayed_jump():
 	print("ddd squat over ", Input.is_action_pressed("ui_accept"), " ", velocity.y)
 	if not Input.is_action_pressed("ui_accept") and not armored:
 		velocity.y = JUMP_VELOCITY * 0.3
+
+func stop_dash():
+	await get_tree().create_timer(0.35).timeout
+	dashing = false
 
 func delayed_smash():
 	await get_tree().create_timer(0.65).timeout
