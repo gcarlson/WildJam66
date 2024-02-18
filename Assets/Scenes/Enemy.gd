@@ -65,12 +65,9 @@ func _physics_process(delta):
 			velocity.x = 15 if facing_right else -15
 
 	if is_lit():
-		reaction.text = "[center]![/center]"
+		#reaction.text = "[center]![/center]"
 		aggroed = true
 		#print("ddd light")
-	else:
-		reaction.text = ""
-		#print("ddd dark")
 
 	move_and_slide()
 
