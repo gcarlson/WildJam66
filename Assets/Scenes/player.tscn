@@ -588,12 +588,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -91.975
-offset_top = -15.0
-offset_right = 91.975
-offset_bottom = 15.0
+offset_left = -300.5
+offset_top = -27.5
+offset_right = 300.5
+offset_bottom = 27.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 31
 bbcode_enabled = true
 text = "[center]LEVEL COMPLETE"
 
@@ -623,13 +624,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -35.5
-offset_top = -101.215
-offset_right = 35.5
-offset_bottom = -72.2151
+offset_left = -156.5
+offset_top = -131.585
+offset_right = 156.5
+offset_bottom = -67.5857
 grow_horizontal = 2
 grow_vertical = 2
-text = "PAUSED"
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+text = "[center]PAUSED"
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="PauseScreen"]
 anchors_preset = 8
@@ -637,12 +640,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -95.0
-offset_top = -50.305
-offset_right = 95.0
-offset_bottom = -16.235
+offset_left = -333.0
+offset_top = -61.19
+offset_right = 333.0
+offset_bottom = -8.19
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 28
 bbcode_enabled = true
 text = "[center]>RESUME<"
 
@@ -652,12 +656,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -94.5
-offset_top = -20.905
-offset_right = 94.5
-offset_bottom = 8.095
+offset_left = -344.0
+offset_top = -19.0
+offset_right = 346.0
+offset_bottom = 45.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 28
 bbcode_enabled = true
 text = "[center]RESTART"
 
@@ -667,12 +672,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -86.0
-offset_top = 6.32999
-offset_right = 86.0
-offset_bottom = 35.33
+offset_left = -361.5
+offset_top = 24.67
+offset_right = 361.5
+offset_bottom = 99.67
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 28
 bbcode_enabled = true
 text = "[center]CONTROLS"
 
@@ -682,12 +688,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -99.335
-offset_top = 38.085
-offset_right = 106.66
-offset_bottom = 67.085
+offset_left = -383.5
+offset_top = 76.39
+offset_right = 383.5
+offset_bottom = 133.39
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 28
 bbcode_enabled = true
 text = "[center]MAIN MENU"
 
@@ -766,6 +773,7 @@ stream = ExtResource("11_xjkr2")
 volume_db = -11.5
 
 [node name="ueplayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("12_40as6")
 volume_db = -7.256
 
@@ -773,6 +781,7 @@ volume_db = -7.256
 stream = ExtResource("13_8j0uk")
 
 [node name="b6player" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
 stream = ExtResource("14_ev7q2")
 volume_db = -7.256
 
