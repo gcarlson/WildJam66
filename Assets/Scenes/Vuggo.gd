@@ -32,11 +32,13 @@ func _physics_process(delta):
 	if is_lit():
 		velocity.x = 0
 		light_time += delta
-		if light_time > 1.0 and light_time - delta <= 1.0:
+		if light_time > 1.5 and light_time - delta <= 1.5:
+			$AnimatedSprite2D.play("Fling")
 			if player_colliding and player_colliding.is_on_floor():
-				
 				player_colliding.velocity.y = -600
 				
+				
+			
 	else:
 		velocity.x = -30 if facing_left else 30
 		light_time = 0
@@ -56,3 +58,9 @@ func _on_area_2d_2_body_entered(body):
 func _on_area_2d_2_body_exited(body):
 	if (body.is_in_group("Player")):
 		player_colliding = null
+
+
+func _on_animated_sprite_2d_animation_finished():
+	if sprite.animation == "Fling":
+		$AnimatedSprite2D.play("default")
+		light_time = 0

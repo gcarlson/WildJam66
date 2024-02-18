@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://44qp0jjk57wb"]
+[gd_scene load_steps=10 format=3 uid="uid://44qp0jjk57wb"]
 
 [ext_resource type="Script" path="res://Assets/Scenes/Vuggo.gd" id="1_nl18k"]
 [ext_resource type="Texture2D" uid="uid://ccerv4smc6r68" path="res://Assets/Sprites/Characters/Enemies/Jumpy2.png" id="2_nsqkv"]
@@ -7,14 +7,30 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_1ly4r"]
 radius = 2.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_6mu2x"]
+atlas = ExtResource("3_uvxay")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qj1ru"]
+atlas = ExtResource("3_uvxay")
+region = Rect2(0, 0, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_ejefe"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_nsqkv")
+"texture": SubResource("AtlasTexture_6mu2x")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_uvxay")
+"texture": SubResource("AtlasTexture_qj1ru")
+}],
+"loop": false,
+"name": &"Fling",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_nsqkv")
 }],
 "loop": true,
 "name": &"default",
@@ -40,7 +56,8 @@ shape = SubResource("CircleShape2D_1ly4r")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_ejefe")
-frame_progress = 0.453249
+animation = &"Fling"
+autoplay = "default"
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -58,5 +75,6 @@ position = Vector2(0, -7.5)
 shape = SubResource("RectangleShape2D_ouodc")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_2_body_entered"]
 [connection signal="body_exited" from="Area2D2" to="." method="_on_area_2d_2_body_exited"]
