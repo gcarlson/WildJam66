@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://kiw5sfqrdkhf"]
+[gd_scene load_steps=12 format=3 uid="uid://kiw5sfqrdkhf"]
 
 [ext_resource type="PackedScene" uid="uid://bfbr7k2y4fs40" path="res://Assets/Scenes/player.tscn" id="1_ioeqp"]
 [ext_resource type="Texture2D" uid="uid://brka4n3womthj" path="res://Assets/Sprites/Tilemaps/Parallax/Parallax-HeatRises1.png" id="2_v6ab6"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bcw7m0c8h6r3n" path="res://Assets/Garbage/MoveIn1.png" id="6_06ppi"]
 [ext_resource type="Texture2D" uid="uid://b2colcioh45oc" path="res://Assets/Garbage/MoveInt2.png" id="7_m2qcx"]
 [ext_resource type="Texture2D" uid="uid://djfwc72rmy3dn" path="res://Assets/Garbage/BenDrowned.png" id="8_58xvt"]
+[ext_resource type="Script" path="res://Assets/Scenes/BenDrowned.gd" id="9_ebs44"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_qnp8e"]
 vertices = PackedVector2Array(2776, 287, 2760, 287, 2220, 285, 2280, 285, 2520, 303, 2520, 319, 2504, 319, 2076, 317, 2076, 287, 2136, 285, -578, -574, 2404, -471, 776, -471, 296, 269, 584, 820, -293, 859, -2041, 788, 280, 253, 1112, -35, 1128, -35, 1128, 45, 1052, 13, 1052, -16, 2972, 57, 2972, -451, 3283, -440, 3032, 41, 2776, 271, 2348, 285, 2348, 255, 776, -19, 792, -19, 792, -3, 764, 31, 892, -3, 892, -19, 908, -19, 984, 13, 908, -35, 924, -35, 984, -18, 924, -51, 1112, -51, 1016, -19, 1016, -18, 1144, 45, 1144, 61, 1276, 61, 1276, 45, 1292, 45, 1292, 13, 1640, 13, 1640, 29, 1912, 125, 1976, 125, 1976, 127, 1896, 127, 1896, 205, 1944, 205, 1944, 207, 1864, 207, 1852, 255, 1864, 253, 1912, 253, 1912, 269, 1900, 303, 1852, 303, 2012, 269, 2012, 189, 2060, 189, 2136, 255, 2060, 29, 2120, 29, 2120, 45, 2472, 45, 2472, 61, 2280, 255, 2728, 61, 2728, 77, 2760, 77, 2760, 109, 2776, 109, 2776, 141, 2792, 141, 2792, 189, 2936, 189, 2936, 239, 2808, 239, 2808, 255, 2792, 255, 2792, 271, 2760, 303, 2744, 303, 2744, 319, 2728, 319, 2716, 303, 2728, 335, 2684, 335, 2684, 333, 2716, 333, 2648, 303, 2648, 319, 2632, 319, 2588, 303, 2632, 335, 2556, 335, 2556, 333, 2588, 333, 2504, 335, 2408, 335, 2408, 425, 2060, 425, 2060, 415, 2008, 317, 2044, 399, 2044, 415, 2028, 399, 2028, 383, 2012, 383, 2012, 367, 1996, 367, 1996, 351, 1980, 351, 1980, 335, 2008, 287, 1916, 335, 1916, 319, 1900, 319, 1772, 255, 1772, 253, 1820, 253, 1820, 205, 1852, 205, 1852, 159, 1788, 159, 1788, 141, 1804, 141, 1804, 125, 1852, 125, 1720, 79, 1720, 95, 1704, 95, 1704, 111, 1688, 111, 1688, 127, 1672, 127, 1672, 143, 1324, 143, 1324, 127, 1308, 127, 1308, 111, 1292, 111, 1292, 95, 1112, 95, 1112, 111, 1096, 111, 940, 105, 924, 89, 1096, 127, 1080, 127, 956, 121, 1080, 137, 956, 137, 940, 121, 924, 105, 908, 89, 908, 73, 892, 73, 892, 47, 764, 47, 476, 31, 476, -439, 440, -439, 440, -375, 264, -375, 264, -359, 248, -359, 248, -343, 232, -343, 232, -327, 216, -327, 216, -295, 200, -295, 200, -231, 184, -231, 184, 45, 200, 45, 200, 109, 216, 109, 216, 157, 232, 157, 232, 189, 248, 189, 248, 205, 264, 205, 264, 237, 280, 237, 296, 253, 328, 269, 328, 285, 376, 285, 376, 301, 472, 301, 472, 317, 552, 317, 552, 333, 904, 333, 904, 349, 1768, 445, 1244, 349, 1244, 333, 1340, 333, 1752, 429, 1720, 397, 1340, 317, 1388, 317, 1704, 381, 1388, 301, 1420, 301, 1420, 285, 1452, 285, 1452, 269, 1480, 269, 1480, 285, 1512, 285, 1512, 301, 1564, 301, 1564, 285, 1672, 285, 1672, 301, 1688, 301, 1688, 349, 1704, 349, 1720, 381, 1736, 397, 1736, 413, 1752, 413, 1768, 429, 1800, 445, 1800, 461, 1832, 461, 1832, 477, 1912, 477, 1912, 493, 1944, 493, 1944, 509, 2008, 509, 2008, 525, 2120, 525, 2120, 541, 2380, 541, 2380, 525, 2460, 525, 2460, 509, 2508, 509, 2508, 493, 2524, 493, 2524, 477, 2540, 477, 2540, 461, 2908, 461, 2908, 445, 3100, 445, 3100, 429, 3148, 429, 3272, 915, 3148, 413, 3164, 413, 3164, 397, 3180, 397, 3180, 381, 3196, 381, 3196, 349, 3212, 349, 3212, 317, 3228, 317, 3228, 269, 3244, 269, 3244, 89, 3228, 89, 3228, 57, 3164, 57, 3164, 41, 3032, 57, 1912, 29, 1852, 79, 2220, 255)
@@ -15,11 +16,14 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Arr
 outlines = Array[PackedVector2Array]([PackedVector2Array(-582, -585, -2066, 798, -293, 869, 584, 830, 3282, 926, 3294, -450)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vjcer"]
+size = Vector2(31, 46)
+
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_ioeqp")]
 position = Vector2(-522, -184)
-level = 2
+can_swap = false
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 layer = -1
@@ -91,3 +95,12 @@ texture = ExtResource("7_m2qcx")
 [node name="BenDrowned" type="Sprite2D" parent="."]
 position = Vector2(933, 244)
 texture = ExtResource("8_58xvt")
+script = ExtResource("9_ebs44")
+
+[node name="Area2D" type="Area2D" parent="BenDrowned"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BenDrowned/Area2D"]
+position = Vector2(-1.5, 2)
+shape = SubResource("RectangleShape2D_vjcer")
+
+[connection signal="body_entered" from="BenDrowned/Area2D" to="BenDrowned" method="_on_area_2d_body_entered"]

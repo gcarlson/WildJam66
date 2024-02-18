@@ -17,6 +17,8 @@ extends CharacterBody2D
 
 @export var level : int
 
+@export var can_swap = true
+
 var scenes = ["res://Assets/Scenes/level_2.tscn", "res://Assets/Scenes/level_1.tscn", "res://Assets/Scenes/level_3.tscn", "res://Assets/Scenes/home_page.tscn"]
 
 const SPEED = 250.0
@@ -74,22 +76,8 @@ func _physics_process(delta):
 			stop_dash()
 			return
 		
-	if Input.is_action_just_pressed("switch_form") and (armored or not armor_detector.overlaps_body(tilemap)):
-		armored = not armored
-		water_collider.position.y = 0 if armored else 26
-		
-		big_sprite.visible = armored
-		big_collider.disabled = not armored
-		small_sprite.visible = not armored
-		small_collider.disabled = armored
-		
-		small_lights.visible = not armored
-		big_lights.visible = armored
-		
-		if armored:
-			active_sprite = big_sprite
-		else:
-			active_sprite = small_sprite
+	if Input.is_action_just_pressed("switch_form") and can_swap and (armored or not armor_detector.overlaps_body(tilemap)):
+		swap_forms()
 		
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -125,6 +113,24 @@ func delayed_jump():
 	print("ddd squat over ", Input.is_action_pressed("ui_accept"), " ", velocity.y)
 	if not Input.is_action_pressed("ui_accept") and not armored:
 		velocity.y = JUMP_VELOCITY * 0.3
+
+func swap_forms():
+	can_swap = true
+	armored = not armored
+	water_collider.position.y = 0 if armored else 26
+	
+	big_sprite.visible = armored
+	big_collider.disabled = not armored
+	small_sprite.visible = not armored
+	small_collider.disabled = armored
+	
+	small_lights.visible = not armored
+	big_lights.visible = armored
+	
+	if armored:
+		active_sprite = big_sprite
+	else:
+		active_sprite = small_sprite
 
 func stop_dash():
 	await get_tree().create_timer(DASH_DURATION).timeout
