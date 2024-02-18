@@ -76,13 +76,13 @@ func _physics_process(delta):
 			stop_dash()
 			return
 		
-	if Input.is_action_just_pressed("switch_form") and can_swap and (armored or not armor_detector.overlaps_body(tilemap)):
+	if Input.is_action_just_pressed("switch_form") and can_swap and not anim_locked and (armored or not armor_detector.overlaps_body(tilemap)):
 		swap_forms()
 		
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis("ui_left", "ui_right")
-	if direction:
+	if direction and not anim_locked:
 		if armored:
 			velocity.x = direction * SPEED * .7
 		else:
