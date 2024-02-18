@@ -12,7 +12,9 @@ var index = 0
 var move_cooldown = 0
 
 # Called when the node enters the scene tree for the first time.
+@onready var SL = preload("res://Assets/Sounds/sunlight3.mp3")
 func _ready():
+	$"../SLplayer".play()
 	pass # Replace with function body.
 
 

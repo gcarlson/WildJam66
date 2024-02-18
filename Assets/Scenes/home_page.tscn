@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cuge8cytvl0vh"]
+[gd_scene load_steps=7 format=3 uid="uid://cuge8cytvl0vh"]
 
 [ext_resource type="Script" path="res://Assets/Scenes/home_page.gd" id="1_ppya4"]
 [ext_resource type="Script" path="res://Assets/Scenes/LevelMenu.gd" id="2_ipp4i"]
 [ext_resource type="Script" path="res://Assets/Scenes/Credits.gd" id="3_7joe6"]
 [ext_resource type="Texture2D" uid="uid://bjgv7v2y81nwm" path="res://Assets/Sprites/then-the-morning-comes.png" id="3_unbpj"]
+[ext_resource type="AudioStream" uid="uid://drkbwvkv1ykyu" path="res://Assets/Sounds/sunlight3.mp3" id="5_bcsp4"]
 
 [sub_resource type="Theme" id="Theme_qnbgd"]
 
@@ -214,3 +215,7 @@ HappyPhoenix
 SkateBoardKnight
 
 [center]>Back<"
+
+[node name="SLplayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_bcsp4")
+volume_db = -5.025

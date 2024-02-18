@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://bfbr7k2y4fs40"]
+[gd_scene load_steps=75 format=3 uid="uid://bfbr7k2y4fs40"]
 
 [ext_resource type="Script" path="res://Assets/Scenes/Player.gd" id="1_glxh4"]
 [ext_resource type="Texture2D" uid="uid://p5fcha3vju8g" path="res://Assets/Sprites/Characters/PlayerAnimations/updated-idle.png" id="2_kws6x"]
@@ -11,6 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://dhsjn5yra8xj4" path="res://Assets/Sprites/Effects/Slammination.png" id="7_88dve"]
 [ext_resource type="Script" path="res://Assets/Scenes/ControlsScreen.gd" id="9_mqdnj"]
 [ext_resource type="AudioStream" uid="uid://ciaslxblyf0ap" path="res://Assets/Sounds/Squeek.wav" id="11_xjkr2"]
+[ext_resource type="AudioStream" uid="uid://dy3rvjyya3uud" path="res://Assets/Sounds/untitledevil5.mp3" id="12_40as6"]
+[ext_resource type="AudioStream" uid="uid://chgowt2e4qn7r" path="res://Assets/Sounds/DeathJPeG.mp3" id="13_8j0uk"]
+[ext_resource type="AudioStream" uid="uid://bldgxbtoxyw2g" path="res://Assets/Sounds/Bond6.mp3" id="14_ev7q2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0w0vx"]
 size = Vector2(22, 47)
@@ -551,13 +554,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -35.0
-offset_top = -12.0
-offset_right = 47.0
-offset_bottom = 14.0
+offset_left = -302.5
+offset_top = -26.715
+offset_right = 302.5
+offset_bottom = 215.286
 grow_horizontal = 2
 grow_vertical = 2
-text = "YOU DIED"
+theme_override_font_sizes/normal_font_size = 31
+bbcode_enabled = true
+text = "[center]You have been extinguished"
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 layer = 5
@@ -760,10 +765,19 @@ shape = SubResource("CapsuleShape2D_ey4hj")
 stream = ExtResource("11_xjkr2")
 volume_db = -11.5
 
-[node name="MusicHandler" type="AudioStreamPlayer" parent="."]
+[node name="ueplayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_40as6")
+volume_db = -7.256
+
+[node name="djplayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_8j0uk")
+
+[node name="b6player" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_ev7q2")
+volume_db = -7.256
 
 [connection signal="animation_changed" from="BigAnimatedSprite" to="." method="_on_big_animated_sprite_animation_changed"]
 [connection signal="animation_finished" from="BigAnimatedSprite" to="." method="_on_big_animated_sprite_animation_finished"]
 [connection signal="frame_changed" from="BigAnimatedSprite" to="." method="_on_big_animated_sprite_frame_changed"]
 [connection signal="body_entered" from="WaterCollider" to="." method="_on_water_collider_body_entered"]
-[connection signal="finished" from="MusicHandler" to="." method="_on_music_handler_finished"]
+[connection signal="finished" from="ueplayer" to="." method="_on_music_handler_finished"]

@@ -14,8 +14,11 @@ extends CharacterBody2D
 @onready var armor_detector = $ArmorDetector
 @onready var level_text = $CanvasLayer2/RichTextLabel
 @onready var stun_hitbox = $SlamHitbox
-@onready var music = $MusicHandler
 @export var level : int
+@onready var UE = preload("res://Assets/Sounds/untitledevil5.mp3")
+@onready var B6 = preload("res://Assets/Sounds/Bond6.mp3")
+@onready var DJ = preload("res://Assets/Sounds/DeathJPeG.mp3")
+@onready var SL = preload("res://Assets/Sounds/sunlight3.mp3")
 
 @export var can_swap = true
 
@@ -43,8 +46,11 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
 	tilemap = get_tree().get_first_node_in_group("Tilemap")
-	music.autoplay = true;
-	music.play()
+	if (level > 1):
+		$ueplayer.play()
+	else:
+		$b6player.play()
+
 
 func _physics_process(delta):
 	if dashing:
@@ -155,8 +161,11 @@ func _on_big_animated_sprite_animation_finished():
 	anim_locked = false
 
 func game_over():
+	$djplayer.play()
+	$ueplayer.stop()
+	$b6player.stop()
 	death_splash.visible = true
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(2).timeout
 	get_tree().call_deferred("reload_current_scene")
 	
 func complete_level():
@@ -182,7 +191,3 @@ func _on_big_animated_sprite_animation_changed():
 	
 	if big_sprite && big_sprite.animation == "Walk" && armored: # && $AudioStreamPlayer2D2.playing == false:
 		$AudioStreamPlayer2D2.play()
-
-
-func _on_music_handler_finished():
-	music.play() # Replace with function body.
