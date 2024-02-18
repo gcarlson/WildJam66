@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dh6ljwehk5r3o"]
+[gd_scene load_steps=24 format=3 uid="uid://dh6ljwehk5r3o"]
 
 [ext_resource type="PackedScene" uid="uid://bfbr7k2y4fs40" path="res://Assets/Scenes/player.tscn" id="1_fph8l"]
 [ext_resource type="TileSet" uid="uid://biuss18t7viue" path="res://Assets/Scenes/GlobalSet.tres" id="2_sgsl5"]
@@ -54,6 +54,15 @@ size = Vector2(41, 8)
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_6mbk8"]
 polygon = PackedVector2Array(3.5, -4.5, 37.5, -4.5, 39.5, -16.5, 0.5, -16.5)
 
+[sub_resource type="Gradient" id="Gradient_cydr7"]
+offsets = PackedFloat32Array(0, 0.720779)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2t0pf"]
+gradient = SubResource("Gradient_cydr7")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [node name="Node2D2" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_fph8l")]
@@ -99,14 +108,13 @@ texture = ExtResource("5_a8uav")
 centered = false
 
 [node name="CanvasModulate" type="CanvasModulate" parent="ParallaxBackground"]
-visible = false
 color = Color(0.0980392, 0.0980392, 0.0980392, 1)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0.211765, 0.211765, 0.211765, 1)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+visible = false
 position = Vector2(141, 4)
 range_layer_min = -5
 range_layer_max = 5
@@ -167,3 +175,12 @@ position = Vector2(48, 198)
 
 [node name="Balloon" parent="." instance=ExtResource("15_kunsx")]
 position = Vector2(-74, 266)
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(-8, -592)
+energy = 1.22
+range_layer_min = -5
+range_layer_max = 5
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_2t0pf")
+texture_scale = 50.0
