@@ -29,13 +29,19 @@ func _physics_process(delta):
 				visible = not visible
 				get_tree().paused = visible
 				get_tree().call_deferred("reload_current_scene")
+			elif index == 3:
+				visible = not visible
+				get_tree().paused = visible
+				get_tree().change_scene_to_file("res://Assets/Scenes/home_page.tscn")
 		move_cooldown -= delta
 		var direction = Input.get_axis("ui_up", "ui_down")
 		if direction and move_cooldown <= 0:
 			var s = buttons[index].text
 			print("substr ", s.substr(1, len(s) - 2))
-			buttons[index].text = s.substr(1, len(s) - 2)
+			buttons[index].text = "[center]" + s.substr(9, len(s) - 10)
+			#buttons[index].text = s.substr(1, len(s) - 2)
 			index = (index + (1 if direction > 0 else -1) + 4) % 4
-			buttons[index].text = ">" + buttons[index].text + "<"
-			move_cooldown = 0.5
+			s = buttons[index].text
+			buttons[index].text = "[center]>" + s.substr(8, len(s) - 1) + "<"
+			move_cooldown = 0.2
 		

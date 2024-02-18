@@ -631,13 +631,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -63.0
-offset_top = -70.0
-offset_right = 127.0
-offset_bottom = -34.0
+offset_left = -95.0
+offset_top = -50.305
+offset_right = 95.0
+offset_bottom = -16.235
 grow_horizontal = 2
 grow_vertical = 2
-text = ">RESUME<"
+bbcode_enabled = true
+text = "[center]>RESUME<"
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="PauseScreen"]
 anchors_preset = 8
@@ -645,13 +646,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -62.0
-offset_top = -36.0
-offset_right = 127.0
-offset_bottom = -7.0
+offset_left = -94.5
+offset_top = -20.905
+offset_right = 94.5
+offset_bottom = 8.095
 grow_horizontal = 2
 grow_vertical = 2
-text = "RESTART"
+bbcode_enabled = true
+text = "[center]RESTART"
 
 [node name="RichTextLabel4" type="RichTextLabel" parent="PauseScreen"]
 anchors_preset = 8
@@ -659,13 +661,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -60.0
-offset_top = -2.0
-offset_right = 112.0
-offset_bottom = 27.0
+offset_left = -86.0
+offset_top = 6.32999
+offset_right = 86.0
+offset_bottom = 35.33
 grow_horizontal = 2
 grow_vertical = 2
-text = "CONTROLS"
+bbcode_enabled = true
+text = "[center]CONTROLS"
 
 [node name="RichTextLabel5" type="RichTextLabel" parent="PauseScreen"]
 anchors_preset = 8
@@ -673,13 +676,108 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -64.0
-offset_top = 31.0
-offset_right = 142.0
-offset_bottom = 60.0
+offset_left = -99.335
+offset_top = 38.085
+offset_right = 106.66
+offset_bottom = 67.085
 grow_horizontal = 2
 grow_vertical = 2
-text = "CONTROLS	"
+bbcode_enabled = true
+text = "[center]MAIN MENU"
+
+[node name="PauseScreen2" type="CanvasLayer" parent="."]
+process_mode = 3
+layer = 5
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="PauseScreen2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 733.0
+offset_bottom = 412.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.815686)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PauseScreen2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -52.0
+offset_top = -86.755
+offset_right = 52.0
+offset_bottom = -57.7551
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center]CONTROLS"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="PauseScreen2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -95.0
+offset_top = -50.305
+offset_right = 95.0
+offset_bottom = -16.235
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center]>RESUME<"
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="PauseScreen2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -94.5
+offset_top = -20.905
+offset_right = 94.5
+offset_bottom = 8.095
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center]RESTART"
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="PauseScreen2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -86.0
+offset_top = 6.32999
+offset_right = 86.0
+offset_bottom = 35.33
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center]CONTROLS"
+
+[node name="RichTextLabel5" type="RichTextLabel" parent="PauseScreen2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -99.335
+offset_top = 38.085
+offset_right = 106.66
+offset_bottom = 67.085
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center]MAIN MENU"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_fh8cn")

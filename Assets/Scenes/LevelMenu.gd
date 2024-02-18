@@ -36,4 +36,4 @@ func _physics_process(delta):
 			index = (index + (1 if direction > 0 else -1) + 4) % 4
 			s = buttons[index].text
 			buttons[index].text = "[center]>" + s.substr(8, len(s) - 1) + "<"
-			move_cooldown = 0.5
+			move_cooldown = 0.2
