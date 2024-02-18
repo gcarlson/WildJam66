@@ -196,10 +196,10 @@ scale = Vector2(0.25, 0.25)
 texture = ExtResource("3_unbpj")
 
 [node name="RichTextLabel5" type="RichTextLabel" parent="Credits"]
-offset_left = 98.0
-offset_top = 59.0
-offset_right = 877.0
-offset_bottom = 617.0
+offset_left = 64.0
+offset_top = 34.0
+offset_right = 843.0
+offset_bottom = 614.0
 theme = SubResource("Theme_qnbgd")
 theme_override_font_sizes/normal_font_size = 31
 bbcode_enabled = true
@@ -213,6 +213,7 @@ Level Design                                        SalmonSleighRide
 Special thanks to our playtesters:
 HappyPhoenix
 SkateBoardKnight
+SocioFly
 
 [center]>Back<"
 
