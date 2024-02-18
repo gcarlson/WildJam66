@@ -34,6 +34,8 @@ func _physics_process(delta):
 		light_time += delta
 		if light_time > 1.5 and light_time - delta <= 1.5:
 			$AnimatedSprite2D.play("Fling")
+		elif (sprite.animation != "Fling"):
+			sprite.play("idle")
 			if player_colliding and player_colliding.is_on_floor():
 				player_colliding.velocity.y = -600
 				
@@ -41,6 +43,7 @@ func _physics_process(delta):
 			
 	else:
 		velocity.x = -30 if facing_left else 30
+		sprite.play("default")
 		light_time = 0
 	
 	move_and_slide()
