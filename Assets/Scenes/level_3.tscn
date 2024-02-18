@@ -72,7 +72,6 @@ centered = false
 color = Color(0.0980392, 0.0980392, 0.0980392, 1)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0.211765, 0.211765, 0.211765, 1)
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
