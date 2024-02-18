@@ -3,6 +3,7 @@ extends CanvasLayer
 
 @onready var buttons = [$RichTextLabel2, $RichTextLabel3, $RichTextLabel4]
 @onready var level_menu = $"../LevelMenu"
+@onready var credits = $"../Credits"
 
 var scenes = ["res://Assets/Scenes/level_2.tscn", "res://Assets/Scenes/level_1.tscn", "res://Assets/Scenes/level_3.tscn"]
 
@@ -21,10 +22,14 @@ func _physics_process(delta):
 		return
 	if Input.is_action_just_pressed("ui_accept"):
 		if index == 0:
-			get_tree().change_scene_to_file(scenes[0])
+			get_tree().change_scene_to_file("res://Assets/Scenes/level_0.tscn")
 		elif index == 1:
 			await get_tree().create_timer(0.1).timeout
 			level_menu.visible = true
+			visible = false
+		elif index == 2:
+			await get_tree().create_timer(0.1).timeout
+			credits.visible = true
 			visible = false
 	else:
 		move_cooldown -= delta
