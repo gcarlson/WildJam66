@@ -153,9 +153,11 @@ texture = ExtResource("5_svhi2")
 centered = false
 
 [node name="CanvasModulate" type="CanvasModulate" parent="ParallaxBackground"]
+visible = false
 color = Color(0.0980392, 0.0980392, 0.0980392, 1)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0.211765, 0.211765, 0.211765, 1)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
