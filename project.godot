@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Wild Jam 66"
-run/main_scene="res://Assets/Scenes/level_2.tscn"
+run/main_scene="res://Assets/Scenes/home_page.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
