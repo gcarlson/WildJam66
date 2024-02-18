@@ -5,11 +5,11 @@
 [ext_resource type="Texture2D" uid="uid://ccxabfuhijt6s" path="res://Assets/Sprites/Characters/PlayerAnimations/AnimationsBigBoislam.png" id="3_gbewv"]
 [ext_resource type="Texture2D" uid="uid://bquwp2vw66nqj" path="res://Assets/Sprites/Characters/PlayerAnimations/FIXEDwalk2.png" id="4_4gtk3"]
 [ext_resource type="Texture2D" uid="uid://ci86smgk2lxbi" path="res://Assets/Sprites/Characters/PlayerAnimations/SmallFireBoiIdle.png" id="5_722p4"]
-[ext_resource type="AudioStream" uid="uid://c6ybh4q7a1ioa" path="res://Assets/Sounds/Step2.wav" id="6_fh8cn"]
 [ext_resource type="Texture2D" uid="uid://cppwtd7gcsagc" path="res://Assets/Sprites/Characters/PlayerAnimations/Smallboimove.png" id="6_fn1eq"]
 [ext_resource type="Texture2D" uid="uid://dt720grepir5q" path="res://Assets/Sprites/Characters/Enemies/EnemyAnimations/Dash.png" id="6_vcq2e"]
 [ext_resource type="Script" path="res://Assets/Scenes/PauseScreen.gd" id="6_vv26t"]
 [ext_resource type="Texture2D" uid="uid://dhsjn5yra8xj4" path="res://Assets/Sprites/Effects/Slammination.png" id="7_88dve"]
+[ext_resource type="AudioStream" uid="uid://ciaslxblyf0ap" path="res://Assets/Sounds/Squeek.wav" id="11_xjkr2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0w0vx"]
 size = Vector2(22, 47)
@@ -780,7 +780,9 @@ bbcode_enabled = true
 text = "[center]MAIN MENU"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6_fh8cn")
+stream = ExtResource("11_xjkr2")
+volume_db = -13.61
+pitch_scale = 1.05
 
 [node name="ArmorDetector" type="Area2D" parent="."]
 
@@ -802,7 +804,14 @@ position = Vector2(0, 25.23)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_ey4hj")
 
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_xjkr2")
+volume_db = -11.5
+
+[node name="MusicHandler" type="AudioStreamPlayer" parent="."]
+
 [connection signal="animation_changed" from="BigAnimatedSprite" to="." method="_on_big_animated_sprite_animation_changed"]
 [connection signal="animation_finished" from="BigAnimatedSprite" to="." method="_on_big_animated_sprite_animation_finished"]
 [connection signal="frame_changed" from="BigAnimatedSprite" to="." method="_on_big_animated_sprite_frame_changed"]
 [connection signal="body_entered" from="WaterCollider" to="." method="_on_water_collider_body_entered"]
+[connection signal="finished" from="MusicHandler" to="." method="_on_music_handler_finished"]

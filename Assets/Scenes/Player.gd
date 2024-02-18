@@ -14,7 +14,7 @@ extends CharacterBody2D
 @onready var armor_detector = $ArmorDetector
 @onready var level_text = $CanvasLayer2/RichTextLabel
 @onready var stun_hitbox = $SlamHitbox
-
+@onready var music = $MusicHandler
 @export var level : int
 
 @export var can_swap = true
@@ -43,6 +43,8 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
 	tilemap = get_tree().get_first_node_in_group("Tilemap")
+	music.autoplay = true;
+	music.play()
 
 func _physics_process(delta):
 	if dashing:
@@ -171,11 +173,16 @@ func _on_water_collider_body_entered(body):
 
 
 func _on_big_animated_sprite_frame_changed():
-	if big_sprite.animation == "Walk" && armored:
+	if big_sprite.animation == "Walk" && armored: # && is_on_floor():
 		if big_sprite.frame == 3 || big_sprite.frame == 7:
 			step_sound.play()
 
 
-#func _on_big_animated_sprite_animation_changed():
-	#if big_sprite.animation == "Walk":
-	#	print("treash")
+func _on_big_animated_sprite_animation_changed():
+	
+	if big_sprite && big_sprite.animation == "Walk" && armored: # && $AudioStreamPlayer2D2.playing == false:
+		$AudioStreamPlayer2D2.play()
+
+
+func _on_music_handler_finished():
+	music.play() # Replace with function body.
