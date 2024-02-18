@@ -475,8 +475,9 @@ speed_scale = 2.0
 z_index = 1
 position = Vector2(0, 19)
 sprite_frames = SubResource("SpriteFrames_dlm6x")
-animation = &"dash"
+animation = &"walk"
 autoplay = "Idle"
+speed_scale = 2.0
 
 [node name="BigLights" type="Node2D" parent="."]
 visible = false
