@@ -2,7 +2,7 @@ extends CanvasLayer
 
 
 @onready var buttons = [$RichTextLabel2, $RichTextLabel3, $RichTextLabel4, $RichTextLabel5]
-
+@onready var controls = $"../ControlsScreen"
 var index = 0
 
 var move_cooldown = 0
@@ -14,13 +14,13 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):	
-	if Input.is_action_just_pressed("ui_cancel"):
+	if Input.is_action_just_pressed("ui_cancel") and not controls.visible:
 		print("ddd unpause")
 		visible = not visible
 		get_tree().paused = visible
 		print("ddd unpause done")
 		
-	if get_tree().paused:
+	if get_tree().paused and visible:
 		if Input.is_action_just_pressed("ui_accept"):
 			if index == 0:
 				visible = not visible
@@ -29,6 +29,10 @@ func _physics_process(delta):
 				visible = not visible
 				get_tree().paused = visible
 				get_tree().call_deferred("reload_current_scene")
+			elif index == 2:
+				await get_tree().create_timer(0.1).timeout
+				controls.visible = true
+				visible = false
 			elif index == 3:
 				visible = not visible
 				get_tree().paused = visible

@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://bfbr7k2y4fs40"]
+[gd_scene load_steps=72 format=3 uid="uid://bfbr7k2y4fs40"]
 
 [ext_resource type="Script" path="res://Assets/Scenes/Player.gd" id="1_glxh4"]
 [ext_resource type="Texture2D" uid="uid://p5fcha3vju8g" path="res://Assets/Sprites/Characters/PlayerAnimations/updated-idle.png" id="2_kws6x"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dt720grepir5q" path="res://Assets/Sprites/Characters/Enemies/EnemyAnimations/Dash.png" id="6_vcq2e"]
 [ext_resource type="Script" path="res://Assets/Scenes/PauseScreen.gd" id="6_vv26t"]
 [ext_resource type="Texture2D" uid="uid://dhsjn5yra8xj4" path="res://Assets/Sprites/Effects/Slammination.png" id="7_88dve"]
+[ext_resource type="Script" path="res://Assets/Scenes/ControlsScreen.gd" id="9_mqdnj"]
 [ext_resource type="AudioStream" uid="uid://ciaslxblyf0ap" path="res://Assets/Sounds/Squeek.wav" id="11_xjkr2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0w0vx"]
@@ -685,12 +686,13 @@ grow_vertical = 2
 bbcode_enabled = true
 text = "[center]MAIN MENU"
 
-[node name="PauseScreen2" type="CanvasLayer" parent="."]
+[node name="ControlsScreen" type="CanvasLayer" parent="."]
 process_mode = 3
 layer = 5
 visible = false
+script = ExtResource("9_mqdnj")
 
-[node name="ColorRect" type="ColorRect" parent="PauseScreen2"]
+[node name="ColorRect2" type="ColorRect" parent="ControlsScreen"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -704,80 +706,30 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.815686)
 
-[node name="RichTextLabel" type="RichTextLabel" parent="PauseScreen2"]
+[node name="RichTextLabel" type="RichTextLabel" parent="ControlsScreen"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -52.0
-offset_top = -86.755
-offset_right = 52.0
-offset_bottom = -57.7551
+offset_left = -375.0
+offset_top = -187.395
+offset_right = 375.0
+offset_bottom = 338.605
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 36
 bbcode_enabled = true
-text = "[center]CONTROLS"
+text = "[center]CONTROLS
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="PauseScreen2"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -95.0
-offset_top = -50.305
-offset_right = 95.0
-offset_bottom = -16.235
-grow_horizontal = 2
-grow_vertical = 2
-bbcode_enabled = true
-text = "[center]>RESUME<"
+Move : a+d/arrows, Joystick
+Jump : Space, Xbox: A
+Switch Form : F, Xbox: X
+Dash/Smash : E, Xbox: B
 
-[node name="RichTextLabel3" type="RichTextLabel" parent="PauseScreen2"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -94.5
-offset_top = -20.905
-offset_right = 94.5
-offset_bottom = 8.095
-grow_horizontal = 2
-grow_vertical = 2
-bbcode_enabled = true
-text = "[center]RESTART"
+>Back<
 
-[node name="RichTextLabel4" type="RichTextLabel" parent="PauseScreen2"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -86.0
-offset_top = 6.32999
-offset_right = 86.0
-offset_bottom = 35.33
-grow_horizontal = 2
-grow_vertical = 2
-bbcode_enabled = true
-text = "[center]CONTROLS"
-
-[node name="RichTextLabel5" type="RichTextLabel" parent="PauseScreen2"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -99.335
-offset_top = 38.085
-offset_right = 106.66
-offset_bottom = 67.085
-grow_horizontal = 2
-grow_vertical = 2
-bbcode_enabled = true
-text = "[center]MAIN MENU"
+"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_xjkr2")
