@@ -26,7 +26,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-582, -585, -2066, 798,
 source_geometry_group_name = &"navigation_polygon_source_group"
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_0kjib"]
-polygon = PackedVector2Array(3.5, -4.5, 37.5, -4.5, 39.5, -16.5, 0.5, -16.5)
+polygon = PackedVector2Array(3.5, -4.5, 37.5, -4.5, 39.5, -16.5, 0.5, -16.5, 3.5, -4.5)
 
 [sub_resource type="Animation" id="Animation_oxand"]
 length = 0.001
@@ -119,7 +119,7 @@ fill_from = Vector2(0.5, 0.5)
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_ihhvc")]
-position = Vector2(820, 54)
+position = Vector2(922, 30)
 level = 2
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]

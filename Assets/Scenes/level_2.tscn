@@ -108,11 +108,9 @@ texture = ExtResource("5_a8uav")
 centered = false
 
 [node name="CanvasModulate" type="CanvasModulate" parent="ParallaxBackground"]
-visible = false
 color = Color(0.0980392, 0.0980392, 0.0980392, 1)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0.211765, 0.211765, 0.211765, 1)
 
 [node name="Mole" parent="." instance=ExtResource("6_wd40q")]
