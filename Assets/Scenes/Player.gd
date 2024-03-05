@@ -14,6 +14,7 @@ extends CharacterBody2D
 @onready var armor_detector = $ArmorDetector
 @onready var level_text = $CanvasLayer2/RichTextLabel
 @onready var stun_hitbox = $SlamHitbox
+@onready var saved_text = $ControlsScreen2/RichTextLabel
 @export var level : int
 @onready var UE = preload("res://Assets/Sounds/untitledevil5.mp3")
 @onready var B6 = preload("res://Assets/Sounds/Bond6.mp3")
@@ -40,6 +41,9 @@ var last_ground = Vector2(0, 0)
 var anim_locked = false
 var frozen = false
 var can_dash = true
+var coyote_timer = -1
+var hp = 2
+var invuln_timer = -1.0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -50,9 +54,12 @@ func _ready():
 		$ueplayer.play()
 	else:
 		$b6player.play()
-
+	#saved_text.text = "" + str(get_node("/root/SaveState").runs)
+	hp = get_node("/root/SaveState").runs
 
 func _physics_process(delta):
+	invuln_timer -= delta
+	
 	if dashing:
 		velocity = Vector2(-DASH_SPEED if big_sprite.flip_h else DASH_SPEED, 0)
 		move_and_slide()
@@ -61,16 +68,19 @@ func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
+		coyote_timer -= delta
 	else:
+		coyote_timer = 0.1
 		can_dash = true
 		if not safe:
 			last_ground = global_position
 
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if Input.is_action_just_pressed("ui_accept") and coyote_timer > 0:
+		coyote_timer = -1.0
 		delayed_jump()
 		
-	if Input.is_action_just_pressed("ability_1") and !anim_locked:
+	if Input.is_action_just_pressed("ability_1") and !anim_locked and not armored:
 		if armored:
 			#print("ddd tile: ", tilemap.local_to_map(global_position + Vector2(0, 36)))
 			big_sprite.play("Smash")
@@ -161,12 +171,17 @@ func _on_big_animated_sprite_animation_finished():
 	anim_locked = false
 
 func game_over():
-	$djplayer.play()
-	$ueplayer.stop()
-	$b6player.stop()
-	death_splash.visible = true
-	await get_tree().create_timer(2).timeout
-	get_tree().call_deferred("reload_current_scene")
+	if invuln_timer < 0:
+		hp-=1
+		if hp == 0:
+			$djplayer.play()
+			$ueplayer.stop()
+			$b6player.stop()
+			death_splash.visible = true
+			await get_tree().create_timer(2).timeout
+			get_tree().call_deferred("reload_current_scene")
+		else:
+			velocity.y = JUMP_VELOCITY
 	
 func complete_level():
 	frozen = true

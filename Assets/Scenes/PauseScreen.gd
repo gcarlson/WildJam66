@@ -1,8 +1,9 @@
 extends CanvasLayer
 
 
-@onready var buttons = [$RichTextLabel2, $RichTextLabel3, $RichTextLabel4, $RichTextLabel5]
+@onready var buttons = [$RichTextLabel2, $RichTextLabel3, $RichTextLabel4, $RichTextLabel5, $RichTextLabel6]
 @onready var controls = $"../ControlsScreen"
+@onready var difficulty = $"../LevelMenu"
 var index = 0
 
 var move_cooldown = 0
@@ -14,7 +15,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):	
-	if Input.is_action_just_pressed("ui_cancel") and not controls.visible:
+	if Input.is_action_just_pressed("ui_cancel") and not controls.visible and not difficulty.visible:
 		print("ddd unpause")
 		visible = not visible
 		get_tree().paused = visible
@@ -34,6 +35,10 @@ func _physics_process(delta):
 				controls.visible = true
 				visible = false
 			elif index == 3:
+				await get_tree().create_timer(0.1).timeout
+				difficulty.visible = true
+				visible = false
+			elif index == 4:
 				visible = not visible
 				get_tree().paused = visible
 				get_tree().change_scene_to_file("res://Assets/Scenes/home_page.tscn")
@@ -44,7 +49,7 @@ func _physics_process(delta):
 			print("substr ", s.substr(1, len(s) - 2))
 			buttons[index].text = "[center]" + s.substr(9, len(s) - 10)
 			#buttons[index].text = s.substr(1, len(s) - 2)
-			index = (index + (1 if direction > 0 else -1) + 4) % 4
+			index = (index + (1 if direction > 0 else -1) + 5) % 5
 			s = buttons[index].text
 			buttons[index].text = "[center]>" + s.substr(8, len(s) - 1) + "<"
 			move_cooldown = 0.2

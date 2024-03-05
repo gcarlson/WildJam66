@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=3 uid="uid://bfbr7k2y4fs40"]
+[gd_scene load_steps=76 format=3 uid="uid://bfbr7k2y4fs40"]
 
 [ext_resource type="Script" path="res://Assets/Scenes/Player.gd" id="1_glxh4"]
 [ext_resource type="Texture2D" uid="uid://p5fcha3vju8g" path="res://Assets/Sprites/Characters/PlayerAnimations/updated-idle.png" id="2_kws6x"]
@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://dy3rvjyya3uud" path="res://Assets/Sounds/untitledevil5.mp3" id="12_40as6"]
 [ext_resource type="AudioStream" uid="uid://chgowt2e4qn7r" path="res://Assets/Sounds/DeathJPeG.mp3" id="13_8j0uk"]
 [ext_resource type="AudioStream" uid="uid://bldgxbtoxyw2g" path="res://Assets/Sounds/Bond6.mp3" id="14_ev7q2"]
+[ext_resource type="Script" path="res://Assets/Scenes/DifficulyMenu.gd" id="15_34ulk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0w0vx"]
 size = Vector2(22, 47)
@@ -696,6 +697,22 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 28
 bbcode_enabled = true
+text = "[center]DIFFICULTY"
+
+[node name="RichTextLabel6" type="RichTextLabel" parent="PauseScreen"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -383.5
+offset_top = 126.245
+offset_right = 383.5
+offset_bottom = 183.245
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
 text = "[center]MAIN MENU"
 
 [node name="ControlsScreen" type="CanvasLayer" parent="."]
@@ -743,6 +760,18 @@ Dash/Smash : E, Xbox: B
 
 "
 
+[node name="ControlsScreen2" type="CanvasLayer" parent="."]
+process_mode = 3
+layer = 5
+visible = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ControlsScreen2"]
+offset_right = 192.0
+offset_bottom = 139.0
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "0"
+
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_xjkr2")
 volume_db = -13.61
@@ -784,6 +813,106 @@ stream = ExtResource("13_8j0uk")
 process_mode = 3
 stream = ExtResource("14_ev7q2")
 volume_db = -7.256
+
+[node name="LevelMenu" type="CanvasLayer" parent="."]
+process_mode = 3
+visible = false
+script = ExtResource("15_34ulk")
+
+[node name="ColorRect" type="ColorRect" parent="LevelMenu"]
+offset_right = 1188.0
+offset_bottom = 675.0
+color = Color(0, 0, 0, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="LevelMenu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -171.5
+offset_top = -196.98
+offset_right = 171.5
+offset_bottom = -123.98
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 53
+bbcode_enabled = true
+text = "[center]Difficulty"
+fit_content = true
+scroll_active = false
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="LevelMenu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -216.0
+offset_top = -97.0
+offset_right = 218.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 44
+bbcode_enabled = true
+text = "[center]>Advanced (1 HP)<"
+fit_content = true
+scroll_active = false
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="LevelMenu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -215.5
+offset_top = -32.68
+offset_right = 217.5
+offset_bottom = 40.3203
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 44
+bbcode_enabled = true
+text = "[center]Easy (2 HP)"
+fit_content = true
+scroll_active = false
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="LevelMenu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -214.5
+offset_top = 25.86
+offset_right = 216.5
+offset_bottom = 98.8602
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 44
+bbcode_enabled = true
+text = "[center]Casual (3 HP)"
+fit_content = true
+scroll_active = false
+
+[node name="RichTextLabel5" type="RichTextLabel" parent="LevelMenu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -229.0
+offset_top = 93.88
+offset_right = 231.0
+offset_bottom = 166.88
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 44
+bbcode_enabled = true
+text = "[center]Back"
+fit_content = true
+scroll_active = false
 
 [connection signal="animation_changed" from="BigAnimatedSprite" to="." method="_on_big_animated_sprite_animation_changed"]
 [connection signal="animation_finished" from="BigAnimatedSprite" to="." method="_on_big_animated_sprite_animation_finished"]
